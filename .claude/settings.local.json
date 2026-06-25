@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/steve/.claude/projects/C--Users-steve-OneDrive-Desktop-galodev4-0/memory/**)",
+      "Read(//c/Users/steve/.claude/projects/C--Users-steve-OneDrive-Desktop-galodev4-0/**)"
+    ]
+  }
+}
