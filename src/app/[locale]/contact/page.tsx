@@ -63,10 +63,17 @@ export default async function ContactPage({
                 href={CONTACT.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-xl border border-border bg-surface/60 p-5 transition-colors hover:border-accent/50"
+                className="group flex items-center justify-between gap-4 rounded-xl border border-border bg-surface/60 p-5 transition-colors hover:border-accent/50"
               >
-                <Instagram className="h-5 w-5 text-accent" />
-                <span className="font-mono text-sm text-muted group-hover:text-text">@galodevcr</span>
+                <span className="flex items-center gap-4">
+                  <Instagram className="h-5 w-5 text-accent" />
+                  <span className="font-mono text-sm text-muted group-hover:text-text">
+                    {CONTACT.instagramHandle}
+                  </span>
+                </span>
+                <span className="font-mono text-xs text-accent">
+                  {CONTACT.instagramFollowers} {locale === "es" ? "comunidad" : "community"}
+                </span>
               </a>
               <p className="font-mono text-xs text-faint">
                 ASSET: configura RESEND_API_KEY para que el formulario envíe.

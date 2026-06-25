@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Download } from "lucide-react";
+import { Download, Instagram } from "lucide-react";
 import { locales, isLocale, type Locale, type Bilingual } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { resolveBilingual } from "@/lib/i18n/resolve";
@@ -22,11 +22,13 @@ const BIO: Record<Locale, string[]> = {
     "Soy Steven, ingeniero en sistemas con más de 3 años construyendo software web que llega a producción. Trabajo full-stack de punta a punta: levanto requerimientos con el cliente, diseño la arquitectura, escribo el frontend y el backend, y coordino el despliegue.",
     "En el día a día me muevo en stack enterprise — Angular, Go, C# y .NET sobre SQL Server, con Azure, Docker y Scrum — creando e integrando APIs REST y sistemas que operan en ambientes reales. En paralelo, bajo mi marca GaloDev, diseño y envío SaaS completos con Next.js y Supabase: cuatro productos en producción para el mercado LATAM.",
     "Me muevo cómodo entre el negocio y el código: valido requerimientos, gestiono riesgos y me aseguro de que lo que se entrega funcione. Actualmente curso la Licenciatura en Ingeniería en Sistemas con énfasis en Calidad del Software.",
+    "También comparto lo que aprendo: bajo GaloDev he construido una comunidad técnica de más de 6 mil personas (@galodevcr), donde divulgo desarrollo y herramientas.",
   ],
   en: [
     "I'm Steven, a systems engineer with 3+ years building web software that ships to production. I work full-stack end to end: I gather requirements with the client, design the architecture, write the frontend and backend, and coordinate the deployment.",
     "Day to day I work in an enterprise stack — Angular, Go, C# and .NET over SQL Server, with Azure, Docker and Scrum — building and integrating REST APIs and systems that run in real production environments. In parallel, under my GaloDev brand, I design and ship complete SaaS products with Next.js and Supabase: four products in production for the LATAM market.",
     "I'm comfortable between the business and the code: I validate requirements, manage risk and make sure what ships actually works. I'm currently pursuing a Licentiate in Computer Systems Engineering with a focus on Software Quality.",
+    "I also share what I learn: under GaloDev I've built a technical community of 6,000+ people (@galodevcr) where I post about development and tools.",
   ],
 };
 
@@ -163,6 +165,18 @@ export default async function AboutPage({
             <p className="mt-3 font-mono text-sm text-accent">
               {dict.home.role} · GaloDev · Costa Rica
             </p>
+            <a
+              href={CONTACT.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 font-mono text-xs text-muted transition-colors duration-200 hover:border-accent/50 hover:text-text active:scale-95"
+            >
+              <Instagram className="h-3.5 w-3.5 text-accent" />
+              {CONTACT.instagramHandle}
+              <span className="text-faint">·</span>
+              <span className="text-accent">{CONTACT.instagramFollowers}</span>
+              <span>{locale === "es" ? "en comunidad" : "community"}</span>
+            </a>
           </div>
         </div>
 

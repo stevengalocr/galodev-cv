@@ -6,6 +6,9 @@ export const CONTACT = {
   email: "stevengalocr@gmail.com",
   linkedin: "https://www.linkedin.com/in/steven-tercero-galo-94a6621bb",
   instagram: "https://instagram.com/galodevcr",
+  instagramHandle: "@galodevcr",
+  /** Approx audience size — update as it grows. */
+  instagramFollowers: "+6k",
   cv: "/cv.pdf", // ASSET: add public/cv.pdf
 };
 
