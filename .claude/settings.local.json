@@ -2,7 +2,14 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/steve/.claude/projects/C--Users-steve-OneDrive-Desktop-galodev4-0/memory/**)",
-      "Read(//c/Users/steve/.claude/projects/C--Users-steve-OneDrive-Desktop-galodev4-0/**)"
+      "Read(//c/Users/steve/.claude/projects/C--Users-steve-OneDrive-Desktop-galodev4-0/**)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(taskkill //PID 14172 //F)",
+      "Bash(cd \"/c/Users/steve/OneDrive/Desktop/galodev4.0\" && rm -rf .next && echo \"cleaned\")",
+      "Bash(curl -s -o /dev/null -w \"warm /es/about -> %{http_code}\\\\n\" http://localhost:3000/es/about)",
+      "Bash(curl -s -o /dev/null -w \"warm /en/about -> %{http_code}\\\\n\" http://localhost:3000/en/about)",
+      "Bash(curl -s http://localhost:3000/es/about)",
+      "Bash(curl -s http://localhost:3000/en/about)"
     ]
   }
 }
