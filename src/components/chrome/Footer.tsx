@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Instagram, Linkedin, Mail } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dict } from "@/lib/i18n/dictionaries";
 import { CONTACT } from "@/lib/site";
@@ -35,13 +35,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
               <Linkedin className="h-4 w-4" />
             </a>
             <a
-              href={CONTACT.github}
+              href={CONTACT.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="rounded-full border border-border p-2.5 text-muted transition-colors hover:border-accent/50 hover:text-text"
+              aria-label="Instagram"
+              className="rounded-full border border-border p-2.5 text-muted transition-colors hover:border-accent/50 hover:text-text active:scale-95"
             >
-              <Github className="h-4 w-4" />
+              <Instagram className="h-4 w-4" />
             </a>
           </div>
           <p className="font-mono text-xs text-faint">

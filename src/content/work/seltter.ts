@@ -7,7 +7,7 @@ export const seltter: Project = {
   accent: "#C9A84C",
   year: "2026",
   status: { es: "v1.0.1 · Producción", en: "v1.0.1 · Production" },
-  liveUrl: "https://seltter.com", // ASSET: confirm live URL
+  liveUrl: "https://seltter.com",
   kind: {
     es: "SaaS B2B · Fidelización en Wallet",
     en: "B2B SaaS · Wallet loyalty",

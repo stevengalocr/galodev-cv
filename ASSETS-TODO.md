@@ -84,23 +84,23 @@ Imágenes **1200×630 px**. Aparecen cuando compartes el link en WhatsApp, Linke
 
 ## 6. Texto / enlaces (no son imágenes, pero quedan pendientes)
 
-Edita `src/lib/site.ts`:
+`src/lib/site.ts` (✅ ya configurado con datos reales):
 
-| Constante | Valor actual (placeholder) | Acción |
+| Constante | Valor | Estado |
 |---|---|---|
-| `CONTACT.email` | `stevengalocr@gmail.com` | Confirmar (ya es el real) |
-| `CONTACT.linkedin` | `linkedin.com/in/steven-galo` | **Confirmar handle real** |
-| `CONTACT.github` | `github.com/stevengalo` | **Confirmar handle real** (o quitar si los repos son privados) |
-| `CONTACT.cv` | `/cv.pdf` | Subir el archivo |
+| `CONTACT.email` | `stevengalocr@gmail.com` | ✅ real |
+| `CONTACT.linkedin` | `linkedin.com/in/steven-tercero-galo-94a6621bb` | ✅ real |
+| `CONTACT.instagram` | `instagram.com/galodevcr` | ✅ real |
+| `CONTACT.cv` | `/cv.pdf` | ⏳ falta subir `public/cv.pdf` |
 
-Edita el `liveUrl` de cada producto en `src/content/work/<producto>.ts`:
+`liveUrl` de cada producto (✅ ya con las URLs reales):
 
-| Producto | `liveUrl` actual | Acción |
+| Producto | `liveUrl` | Estado |
 |---|---|---|
-| Seltter | `https://seltter.com` | **Poner la URL real desplegada** |
-| DataFud | `https://datfud.com` | **Poner la URL real desplegada** |
-| BilBildin | `https://bilbildin.com` | **Poner la URL real desplegada** |
-| CoinDev | `https://coindev.app` | **Poner la URL real desplegada** |
+| Seltter | `https://seltter.com` | ✅ |
+| DataFud | `https://datafud.com` | ✅ |
+| BilBildin | `https://bilbildin.com` | ✅ |
+| CoinDev | `https://coindev.app` | ✅ |
 
 ---
 
@@ -123,9 +123,9 @@ Copia `.env.example` → `.env.local` y completa:
 
 1. **12 capturas de producto** (lo que más vende). → `public/screenshots/<producto>/`
 2. **Foto** `public/steven.jpg` + **CV** `public/cv.pdf`.
-3. **4 URLs de demo** reales + **LinkedIn**.
+3. ~~URLs de demo + redes~~ ✅ **listas** (links de producto, LinkedIn, Instagram).
 4. `RESEND_API_KEY` para el formulario.
-5. (Opcional) 5 imágenes **OG** + favicon.
+5. (Opcional) 5 imágenes **OG** (favicon ✅ ya hecho como `icon.svg`).
 
-Cuando tengas el grupo 1-3, avísame y activo las imágenes reales
+Cuando tengas el grupo 1-2, avísame y activo las imágenes reales
 (`PLACEHOLDER_MODE = false`) y ajusto encuadres.

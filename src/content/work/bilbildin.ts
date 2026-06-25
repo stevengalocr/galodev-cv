@@ -7,7 +7,7 @@ export const bilbildin: Project = {
   accent: "#C9F24E",
   year: "2026",
   status: { es: "v1.0.1 · Producción", en: "v1.0.1 · Production" },
-  liveUrl: "https://bilbildin.com", // ASSET: confirm live URL
+  liveUrl: "https://bilbildin.com",
   kind: {
     es: "SaaS multi-tenant · E-commerce + ganancia",
     en: "Multi-tenant SaaS · E-commerce + profit",

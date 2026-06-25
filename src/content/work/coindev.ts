@@ -7,7 +7,7 @@ export const coindev: Project = {
   accent: "#7C5CFF",
   year: "2026",
   status: { es: "v0.1 · Pre-lanzamiento", en: "v0.1 · Pre-launch" },
-  liveUrl: "https://coindev.app", // ASSET: confirm live URL
+  liveUrl: "https://coindev.app",
   kind: {
     es: "Web app · Finanzas personales",
     en: "Web app · Personal finance",

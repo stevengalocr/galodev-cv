@@ -7,7 +7,7 @@ export const datfud: Project = {
   accent: "#FF5C38",
   year: "2026",
   status: { es: "v1.0.1 · Producción", en: "v1.0.1 · Production" },
-  liveUrl: "https://datfud.com", // ASSET: confirm live URL
+  liveUrl: "https://datafud.com",
   kind: {
     es: "SaaS multi-tenant · Menú digital QR",
     en: "Multi-tenant SaaS · QR digital menu",

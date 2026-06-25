@@ -1,11 +1,11 @@
 /**
- * Central site constants. The CONTACT links and CV path are ASSETS — confirm /
- * fill them with real values. See ASSETS-TODO.md.
+ * Central site constants. Email + socials are real; the CV file is still an
+ * ASSET (add public/cv.pdf). See ASSETS-TODO.md.
  */
 export const CONTACT = {
   email: "stevengalocr@gmail.com",
-  linkedin: "https://www.linkedin.com/in/steven-galo", // ASSET: confirm handle
-  github: "https://github.com/stevengalo", // ASSET: confirm handle
+  linkedin: "https://www.linkedin.com/in/steven-tercero-galo-94a6621bb",
+  instagram: "https://instagram.com/galodevcr",
   cv: "/cv.pdf", // ASSET: add public/cv.pdf
 };
 
