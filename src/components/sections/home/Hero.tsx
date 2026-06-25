@@ -7,6 +7,7 @@ import type { Dict } from "@/lib/i18n/dictionaries";
 import { EASE } from "@/lib/motion/easings";
 import { usePrefersReducedMotion } from "@/lib/motion/reduced";
 import { Button } from "@/components/ui/Button";
+import { Magnetic } from "@/components/motion/Magnetic";
 
 const WORD = "STEVEN";
 
@@ -53,14 +54,18 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dict }) {
         >
           <p className="text-pretty text-lg text-muted sm:text-xl">{dict.home.heroLead}</p>
           <div className="flex flex-wrap items-center gap-3">
-            <Button href={`/${locale}#work`} variant="solid">
-              {dict.cta.viewWork}
-              <ArrowDown className="h-4 w-4" />
-            </Button>
-            <Button href={`/${locale}/contact`} variant="ghost">
-              {dict.cta.getInTouch}
-              <ArrowUpRight className="h-4 w-4" />
-            </Button>
+            <Magnetic>
+              <Button href={`/${locale}#work`} variant="solid">
+                {dict.cta.viewWork}
+                <ArrowDown className="h-4 w-4" />
+              </Button>
+            </Magnetic>
+            <Magnetic>
+              <Button href={`/${locale}/contact`} variant="ghost">
+                {dict.cta.getInTouch}
+                <ArrowUpRight className="h-4 w-4" />
+              </Button>
+            </Magnetic>
           </div>
         </motion.div>
       </div>

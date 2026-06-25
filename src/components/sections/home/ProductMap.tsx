@@ -51,8 +51,8 @@ export function ProductMap({ locale, dict }: { locale: Locale; dict: Dict }) {
                   {/* node */}
                   <span
                     aria-hidden
-                    className="absolute left-[12px] top-7 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-bg bg-accent sm:left-1/2"
-                    style={{ boxShadow: `0 0 22px 2px ${p.accent}` }}
+                    className="absolute left-[12px] top-7 z-10 h-3.5 w-3.5 -translate-x-1/2 rounded-full border-2 border-bg bg-accent motion-safe:[animation:node-pulse_3s_var(--ease-out)_infinite] sm:left-1/2"
+                    style={{ boxShadow: `0 0 22px 2px ${p.accent}`, animationDelay: `${i * 0.6}s` }}
                   />
 
                   {/* spacer for alternating side on desktop */}
@@ -67,7 +67,7 @@ export function ProductMap({ locale, dict }: { locale: Locale; dict: Dict }) {
                   >
                     <Link
                       href={`/${locale}/work/${p.slug}`}
-                      className="group block rounded-2xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-accent/50 hover:glow sm:p-8"
+                      className="group block rounded-2xl border border-border bg-surface/70 p-6 backdrop-blur-sm transition-[transform,border-color,box-shadow] duration-300 ease-out-strong hover:-translate-y-1 hover:border-accent/50 hover:glow active:scale-[0.99] sm:p-8"
                     >
                       <div className="flex items-center justify-between gap-4">
                         <span className="font-mono text-xs text-faint">

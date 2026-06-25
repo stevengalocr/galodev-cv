@@ -15,7 +15,7 @@ export function Card({
   return (
     <Tag
       className={cn(
-        "relative rounded-2xl border border-border bg-surface/70 backdrop-blur-sm transition-all duration-500",
+        "relative rounded-2xl border border-border bg-surface/70 backdrop-blur-sm transition-[transform,border-color,box-shadow] duration-300 ease-out-strong",
         glow && "hover:border-accent/50 hover:glow",
         className,
       )}

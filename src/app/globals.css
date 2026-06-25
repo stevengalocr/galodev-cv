@@ -12,6 +12,11 @@
   --border: #23232f;
   /* Default accent (neutral cyan-white); case studies override via inline style. */
   --accent: #8b8fa3;
+
+  /* Strong custom easing curves (built-in CSS easings are too weak). */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 * {
@@ -72,6 +77,29 @@ body {
   .glow {
     box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
       0 0 40px -8px color-mix(in srgb, var(--accent) 45%, transparent);
+  }
+  /* Press feedback: instant, subtle, confirms the UI heard the tap. */
+  .press {
+    transition: transform 160ms var(--ease-out);
+  }
+  .press:active {
+    transform: scale(0.97);
+  }
+  .ease-out-strong {
+    transition-timing-function: var(--ease-out);
+  }
+}
+
+/* Node pulse for the product-map (decorative, seen once per visit). */
+@keyframes node-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
   }
 }
 

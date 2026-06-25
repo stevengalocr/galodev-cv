@@ -172,7 +172,7 @@ export function CaseStudy({
           <div className="mt-12 grid gap-5 md:grid-cols-2">
             {project.challenges.map((c, i) => (
               <Reveal key={i} delay={(i % 2) * 0.06}>
-                <div className="group h-full rounded-2xl border border-border bg-surface/70 p-7 backdrop-blur-sm transition-colors duration-500 hover:border-accent/50">
+                <div className="group h-full rounded-2xl border border-border bg-surface/70 p-7 backdrop-blur-sm transition-colors duration-300 ease-out-strong hover:border-accent/50">
                   <div className="mb-4 flex items-center gap-3">
                     <span className="font-mono text-xs text-faint">{String(i + 1).padStart(2, "0")}</span>
                     <span className="h-px flex-1 bg-border transition-colors group-hover:bg-accent/40" />
@@ -229,7 +229,7 @@ export function CaseStudy({
       <section className="border-t border-border px-5 py-16 sm:px-8" style={{ ["--accent" as string]: next.accent }}>
         <Link
           href={`/${locale}/work/${next.slug}`}
-          className="group mx-auto flex max-w-page items-center justify-between gap-6"
+          className="press group mx-auto flex max-w-page items-center justify-between gap-6"
         >
           <div>
             <p className="mono-label mb-2">{dict.cta.nextProject}</p>

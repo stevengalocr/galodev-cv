@@ -2,6 +2,11 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: ["./src/**/*.{ts,tsx,mdx}"],
+  future: {
+    // Only apply `hover:` styles on devices that actually support hover.
+    // Prevents sticky hover states on touch taps (Emil: gate hover behind capability).
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

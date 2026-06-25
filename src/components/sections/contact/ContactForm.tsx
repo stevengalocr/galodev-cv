@@ -53,7 +53,7 @@ export function ContactForm({ dict }: { dict: Dict }) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-medium text-bg transition-colors hover:bg-white disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-text px-6 py-3 text-sm font-medium text-bg transition-[background-color,transform] duration-200 ease-out-strong hover:bg-white active:scale-[0.97] disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
           {status === "sending" ? dict.cta.sending : dict.cta.sendMessage}
           <Send className="h-4 w-4" />

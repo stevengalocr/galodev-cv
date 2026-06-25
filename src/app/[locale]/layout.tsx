@@ -3,6 +3,8 @@ import { locales, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { AuroraBackground } from "@/components/motion/AuroraBackground";
+import { CursorGlow } from "@/components/motion/CursorGlow";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
 
@@ -24,6 +26,8 @@ export default async function LocaleLayout({
   return (
     <SmoothScroll>
       <AuroraBackground />
+      <CursorGlow />
+      <ScrollProgress />
       <Nav locale={locale} dict={dict} />
       <main id="content" className="relative">
         {children}
