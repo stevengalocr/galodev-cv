@@ -71,6 +71,10 @@ const EXPERIENCE: Job[] = [
     role: { es: "Desarrollador Full Stack", en: "Full-stack Developer" },
     period: { es: "Jun 2023 – Actualidad", en: "Jun 2023 – Present" },
     points: [
+      {
+        es: "Rol full-stack completo: participo en todo el ciclo, del frontend al backend, las APIs y el despliegue, en los distintos lenguajes del stack.",
+        en: "Full end-to-end role: I work across the whole cycle — frontend, backend, APIs and deployment — in the stack's different languages.",
+      },
       { es: "Desarrollo de aplicaciones con Angular, Go y C#.", en: "Application development with Angular, Go and C#." },
       { es: "Creación e integración de APIs RESTful.", en: "Building and integrating RESTful APIs." },
       { es: "Despliegue y operación con Azure, Docker y Postman.", en: "Deployment and operations with Azure, Docker and Postman." },
