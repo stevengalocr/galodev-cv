@@ -3,7 +3,7 @@ import { isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Hero } from "@/components/sections/home/Hero";
 import { StackStrip } from "@/components/sections/home/StackStrip";
-import { ProductMap } from "@/components/sections/home/ProductMap";
+import { ProductBands } from "@/components/sections/home/ProductBands";
 import { AboutTeaser } from "@/components/sections/home/AboutTeaser";
 import { ContactCTA } from "@/components/sections/home/ContactCTA";
 
@@ -20,7 +20,7 @@ export default async function HomePage({
     <>
       <Hero locale={locale} dict={dict} />
       <StackStrip dict={dict} />
-      <ProductMap locale={locale} dict={dict} />
+      <ProductBands locale={locale} dict={dict} />
       <AboutTeaser locale={locale} dict={dict} />
       <ContactCTA locale={locale} dict={dict} />
     </>

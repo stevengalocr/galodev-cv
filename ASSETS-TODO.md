@@ -14,11 +14,36 @@ Formato recomendado de imágenes: **WebP o AVIF** (más livianas). PNG/JPG tambi
 
 ---
 
-## 1. Capturas de producto (case studies) — las más importantes
+## 1. Logos de producto — lo que necesito AHORA 🔴
 
-Cada producto muestra **3 capturas reales**. Ratio sugerido **16:10** (las dos
-primeras) y una **21:9** ancha (la tercera, tipo banner). Mínimo ~1600px de ancho,
-fondo limpio, datos creíbles (no "Lorem"). Son lo que más convence a un reclutador.
+La home muestra los productos como **bandas a todo lo ancho**, donde el **logo es el
+héroe**. 4 logos, uno por producto. (Mientras no estén, se muestra el nombre como
+wordmark, así que la home ya se ve completa.)
+
+| Producto | Archivo |
+|---|---|
+| BilBildin | `public/logos/bilbildin.svg` |
+| DataFud   | `public/logos/datafud.svg` |
+| Seltter   | `public/logos/seltter.svg` |
+| CoinDev   | `public/logos/coindev.svg` |
+
+**Specs:**
+- Formato: **SVG** (vectorial, ideal) o **PNG transparente** ≥1000px de ancho.
+- Fondo **transparente**.
+- Debe leerse sobre **fondo oscuro**: idealmente versión **blanca / clara / monocromo
+  claro**. Si tu logo a color tiene buen contraste sobre oscuro, también sirve.
+- Lockup horizontal (símbolo + nombre) o el wordmark/símbolo, con aire alrededor.
+- Cuando los tengas, los coloco y activo `LOGOS_READY = true` en
+  `src/components/sections/home/ProductBands.tsx`.
+
+---
+
+## 2. Capturas de producto (para las páginas de producto · después)
+
+Ya **no van en la home** (la home es solo logos). Estas viven **dentro de la página de
+cada producto** como ejemplos — opcionales / posteriores. Ratio **16:10** (las dos
+primeras) y **21:9** ancha (la tercera, banner). Mínimo ~1600px, fondo limpio, datos
+creíbles.
 
 | Producto | Archivo | Sección / qué debe mostrar |
 |---|---|---|
@@ -121,11 +146,14 @@ Copia `.env.example` → `.env.local` y completa:
 
 ## Resumen rápido de prioridad
 
-1. **12 capturas de producto** (lo que más vende). → `public/screenshots/<producto>/`
+1. 🔴 **4 logos de producto** → `public/logos/<slug>.svg` (lo que necesito ya).
 2. **Foto** `public/steven.jpg` + **CV** `public/cv.pdf`.
-3. ~~URLs de demo + redes~~ ✅ **listas** (links de producto, LinkedIn, Instagram).
-4. `RESEND_API_KEY` para el formulario.
-5. (Opcional) 5 imágenes **OG** (favicon ✅ ya hecho como `icon.svg`).
+3. `RESEND_API_KEY` para el formulario.
+4. (Después / opcional) **12 capturas** para las páginas de producto.
+5. (Opcional) 5 imágenes **OG**.
+6. ✅ Listo: URLs de producto, LinkedIn, Instagram (+6k), favicon (`icon.svg`).
 
-Cuando tengas el grupo 1-2, avísame y activo las imágenes reales
-(`PLACEHOLDER_MODE = false`) y ajusto encuadres.
+> Pendiente futuro (en mente, no ahora): sección **Clientes** con sus links.
+
+Cuando tengas los **logos**, avísame: los coloco, activo `LOGOS_READY = true` y queda
+la home con tu marca real.
