@@ -90,6 +90,16 @@ body {
   }
 }
 
+/* Tiny satellite orbiting the band index (cosmos theme detail). */
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Node pulse for the product-map (decorative, seen once per visit). */
 @keyframes node-pulse {
   0% {

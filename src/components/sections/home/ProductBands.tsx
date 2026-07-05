@@ -55,9 +55,18 @@ export function ProductBands({ locale, dict }: { locale: Locale; dict: Dict }) {
                 />
 
                 <div className="mx-auto flex max-w-page flex-col gap-5 px-5 py-12 sm:flex-row sm:items-center sm:gap-10 sm:px-8 sm:py-20">
-                  {/* index + kind */}
+                  {/* index (with orbiting mote) + kind */}
                   <div className="flex items-center gap-4 sm:w-44 sm:shrink-0 sm:flex-col sm:items-start sm:gap-2">
-                    <span className="font-mono text-sm text-faint">0{i + 1}</span>
+                    <span className="relative inline-flex h-9 w-9 items-center justify-center font-mono text-sm text-faint">
+                      0{i + 1}
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 motion-safe:[animation:orbit-spin_7s_linear_infinite]"
+                        style={{ animationDelay: `${i * -1.75}s` }}
+                      >
+                        <span className="absolute -top-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-accent" />
+                      </span>
+                    </span>
                     <span className="font-mono text-[0.7rem] uppercase tracking-wider text-faint">
                       {resolveBilingual(p.kind, locale)}
                     </span>

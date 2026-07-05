@@ -14,8 +14,13 @@ export interface Dict {
   };
   home: {
     role: string;
+    heroOrigin: string;
     heroLead: string;
+    dragHint: string;
     stackEyebrow: string;
+    skillsEyebrow: string;
+    skillsTitle: string;
+    skillsLead: string;
     workEyebrow: string;
     workTitle: string;
     workLead: string;
@@ -66,10 +71,16 @@ const es: Dict = {
   },
   home: {
     role: "Ingeniero full-stack",
+    heroOrigin: "Desde Costa Rica al mundo.",
     heroLead:
       "Diseño y construyo productos SaaS de extremo a extremo: arquitectura, frontend, backend, base de datos y seguridad.",
+    dragHint: "Arrastra el planeta",
     stackEyebrow: "Herramientas del día a día",
-    workEyebrow: "El sistema",
+    skillsEyebrow: "Mapa estelar",
+    skillsTitle: "Skills de ingeniería",
+    skillsLead:
+      "Las tecnologías que uso a diario, trazadas como constelaciones: del frontend al despliegue.",
+    workEyebrow: "El sistema GaloDev",
     workTitle: "Cuatro productos reales, en producción",
     workLead:
       "Cada uno es un SaaS completo construido solo. Entra a cada caso para ver la arquitectura y los retos de ingeniería.",
@@ -120,10 +131,16 @@ const en: Dict = {
   },
   home: {
     role: "Full-stack engineer",
+    heroOrigin: "From Costa Rica to the world.",
     heroLead:
       "I design and build SaaS products end to end: architecture, frontend, backend, database and security.",
+    dragHint: "Drag the planet",
     stackEyebrow: "Daily tools",
-    workEyebrow: "The system",
+    skillsEyebrow: "Star map",
+    skillsTitle: "Engineering skills",
+    skillsLead:
+      "The technologies I use every day, charted as constellations: from frontend to deployment.",
+    workEyebrow: "The GaloDev system",
     workTitle: "Four real products, in production",
     workLead:
       "Each is a complete SaaS built solo. Open any case study to see the architecture and the engineering challenges.",
