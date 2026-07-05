@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/Button";
 import { AssetImage } from "@/components/ui/AssetImage";
 
 const BIO = {
-  es: "Soy Steven, ingeniero en sistemas con +3 años llevando software a producción — stack enterprise (.NET, Go, Angular) y producto propio (Next.js, Supabase). GaloDev es la marca bajo la que diseño y envío.",
-  en: "I'm Steven, a systems engineer with 3+ years shipping software to production — enterprise stack (.NET, Go, Angular) and my own products (Next.js, Supabase). GaloDev is the brand I design and ship under.",
+  es: "Soy Steven, ingeniero en sistemas con ~6 años construyendo software: freelance, enterprise (.NET, Go, Angular) y producto propio (Next.js, Supabase). GaloDev es la marca bajo la que diseño y envío.",
+  en: "I'm Steven, a systems engineer with ~6 years building software: freelance, enterprise (.NET, Go, Angular) and my own products (Next.js, Supabase). GaloDev is the brand I design and ship under.",
 };
 
 export function AboutTeaser({ locale, dict }: { locale: Locale; dict: Dict }) {

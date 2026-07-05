@@ -37,10 +37,14 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dict }) {
       )}
     >
       <nav className="mx-auto flex h-16 max-w-page items-center justify-between px-5 sm:px-8">
-        <Link href={`/${locale}`} className="group flex items-center gap-2 font-mono text-sm">
+        <Link href={`/${locale}`} className="group flex items-center gap-2.5">
           <span className="inline-block h-2 w-2 rounded-full bg-accent transition-transform duration-500 group-hover:scale-125" />
-          <span className="font-semibold tracking-tight">galodev</span>
-          <span className="text-faint">/steven</span>
+          <span className="flex flex-col leading-none">
+            <span className="text-sm font-semibold tracking-tight">Steven Galo</span>
+            <span className="mt-0.5 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-faint transition-colors duration-300 group-hover:text-muted">
+              GaloDev
+            </span>
+          </span>
         </Link>
 
         <div className="flex items-center gap-1 sm:gap-3">

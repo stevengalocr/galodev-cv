@@ -76,10 +76,10 @@ const es: Dict = {
       "Diseño y construyo productos SaaS de extremo a extremo: arquitectura, frontend, backend, base de datos y seguridad.",
     dragHint: "Arrastra el planeta",
     stackEyebrow: "Herramientas del día a día",
-    skillsEyebrow: "Mapa estelar",
-    skillsTitle: "Skills de ingeniería",
+    skillsEyebrow: "Mi mapa estelar",
+    skillsTitle: "Habilidades de Steven Galo",
     skillsLead:
-      "Las tecnologías que uso a diario, trazadas como constelaciones: del frontend al despliegue.",
+      "Tecnologías que uso y he utilizado en proyectos independientes, freelance y en producción — del frontend al despliegue.",
     workEyebrow: "El sistema GaloDev",
     workTitle: "Cuatro productos reales, en producción",
     workLead:
@@ -136,10 +136,10 @@ const en: Dict = {
       "I design and build SaaS products end to end: architecture, frontend, backend, database and security.",
     dragHint: "Drag the planet",
     stackEyebrow: "Daily tools",
-    skillsEyebrow: "Star map",
-    skillsTitle: "Engineering skills",
+    skillsEyebrow: "My star map",
+    skillsTitle: "Steven Galo's skills",
     skillsLead:
-      "The technologies I use every day, charted as constellations: from frontend to deployment.",
+      "Technologies I use and have used across independent, freelance and production projects — from frontend to deployment.",
     workEyebrow: "The GaloDev system",
     workTitle: "Four real products, in production",
     workLead:

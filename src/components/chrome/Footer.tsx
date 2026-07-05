@@ -9,11 +9,13 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dict }) {
     <footer className="relative border-t border-border">
       <div className="mx-auto flex max-w-page flex-col gap-8 px-5 py-12 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div>
-          <p className="font-mono text-sm">
-            <span className="font-semibold">galodev</span>
-            <span className="text-faint">/steven</span>
+          <p className="flex flex-col leading-none">
+            <span className="text-sm font-semibold tracking-tight">Steven Galo</span>
+            <span className="mt-1 font-mono text-[0.6rem] uppercase tracking-[0.22em] text-faint">
+              GaloDev
+            </span>
           </p>
-          <p className="mt-2 max-w-xs text-sm text-faint">{dict.footer.built}</p>
+          <p className="mt-3 max-w-xs text-sm text-faint">{dict.footer.built}</p>
         </div>
 
         <div className="flex flex-col gap-4 sm:items-end">
