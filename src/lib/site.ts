@@ -9,8 +9,8 @@ export const CONTACT = {
   instagramHandle: "@galodevcr",
   /** Approx audience size — update as it grows. */
   instagramFollowers: "+6k",
-  tiktok: "https://www.tiktok.com/@galodev", // ASSET: confirmar handle exacto de TikTok
-  tiktokHandle: "GaloDev",
+  tiktok: "https://www.tiktok.com/@galodev",
+  tiktokHandle: "@galodev",
   tiktokFollowers: "+36k",
   cv: "/cv.pdf", // ASSET: add public/cv.pdf
 };
