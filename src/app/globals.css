@@ -90,6 +90,17 @@ body {
   }
 }
 
+/* Gentle vertical drift for the background skills on the journey. */
+@keyframes skill-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
 /* Tiny satellite orbiting the band index (cosmos theme detail). */
 @keyframes orbit-spin {
   from {

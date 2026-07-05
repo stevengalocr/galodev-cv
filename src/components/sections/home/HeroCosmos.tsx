@@ -11,7 +11,8 @@ import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Globe } from "@/components/motion/Globe";
 
-const WORD = "STEVEN";
+const FIRST = "STEVEN";
+const LAST = "GALO";
 
 /** Languages/stack orbiting the Earth as satellites. belt 0 = outer, 1 = inner. */
 const SATELLITES: { label: string; belt: 0 | 1 }[] = [
@@ -109,15 +110,36 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
             {dict.home.role} · Costa Rica
           </motion.p>
 
-          <h1 className="select-none text-[clamp(3rem,11vw,9rem)] font-semibold leading-[0.86] tracking-tighter">
-            <span className="sr-only">Steven</span>
-            <span aria-hidden className="flex flex-wrap">
-              {WORD.split("").map((ch, i) => (
+          <h1 className="select-none font-semibold leading-none">
+            <span className="sr-only">Steven Galo</span>
+            {/* STEVEN — discreto, arriba */}
+            <span
+              aria-hidden
+              className="flex flex-wrap font-mono text-[clamp(1rem,2.8vw,1.7rem)] font-medium uppercase tracking-[0.42em] text-muted"
+            >
+              {FIRST.split("").map((ch, i) => (
                 <motion.span
                   key={i}
-                  initial={reduced ? false : { opacity: 0, y: "0.4em", filter: "blur(12px)" }}
+                  initial={reduced ? false : { opacity: 0, y: "0.4em", filter: "blur(8px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.7, ease: EASE.out, delay: 0.1 + i * 0.06 }}
+                  transition={{ duration: 0.55, ease: EASE.out, delay: 0.08 + i * 0.04 }}
+                  className="inline-block"
+                >
+                  {ch}
+                </motion.span>
+              ))}
+            </span>
+            {/* GALO — el que sobresale */}
+            <span
+              aria-hidden
+              className="mt-1 flex flex-wrap text-[clamp(4rem,14vw,11rem)] tracking-tighter"
+            >
+              {LAST.split("").map((ch, i) => (
+                <motion.span
+                  key={i}
+                  initial={reduced ? false : { opacity: 0, y: "0.4em", filter: "blur(14px)" }}
+                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{ duration: 0.8, ease: EASE.out, delay: 0.38 + i * 0.09 }}
                   className="inline-block"
                 >
                   {ch}
