@@ -162,6 +162,7 @@ const STACK_GROUPS: { label: Record<Locale, string>; items: string[] }[] = [
 const LANGUAGES: { label: Bilingual; level: Bilingual }[] = [
   { label: { es: "Español", en: "Spanish" }, level: { es: "Nativo", en: "Native" } },
   { label: { es: "Inglés", en: "English" }, level: { es: "Intermedio", en: "Intermediate" } },
+  { label: { es: "Portugués", en: "Portuguese" }, level: { es: "Básico", en: "Basic" } },
 ];
 
 export default async function AboutPage({

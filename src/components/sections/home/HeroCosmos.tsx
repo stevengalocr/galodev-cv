@@ -216,10 +216,6 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
               </span>
             ))}
 
-            {/* Costa Rica caption */}
-            <p className="absolute -bottom-2 left-1/2 z-[4] -translate-x-1/2 whitespace-nowrap font-mono text-[0.65rem] uppercase tracking-[0.2em] text-faint">
-              {dict.home.dragHint}
-            </p>
           </div>
         </motion.div>
       </div>

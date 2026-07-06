@@ -16,7 +16,6 @@ export interface Dict {
     role: string;
     heroOrigin: string;
     heroLead: string;
-    dragHint: string;
     stackEyebrow: string;
     skillsEyebrow: string;
     skillsTitle: string;
@@ -74,7 +73,6 @@ const es: Dict = {
     heroOrigin: "Desde Costa Rica al mundo.",
     heroLead:
       "Diseño y construyo productos SaaS de extremo a extremo: arquitectura, frontend, backend, base de datos y seguridad.",
-    dragHint: "Arrastra el planeta",
     stackEyebrow: "Herramientas del día a día",
     skillsEyebrow: "El camino",
     skillsTitle: "Habilidades de Steven Galo",
@@ -134,7 +132,6 @@ const en: Dict = {
     heroOrigin: "From Costa Rica to the world.",
     heroLead:
       "I design and build SaaS products end to end: architecture, frontend, backend, database and security.",
-    dragHint: "Drag the planet",
     stackEyebrow: "Daily tools",
     skillsEyebrow: "The path",
     skillsTitle: "Steven Galo's skills",
