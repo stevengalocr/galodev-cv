@@ -31,7 +31,7 @@ const MILESTONES: Milestone[] = [
   {
     year: "—",
     org: "Crestón School",
-    note: { es: "Colegio. Donde empezó la curiosidad.", en: "High school. Where the curiosity began." },
+    note: { es: "Colegio. Donde se tomó la decisión de ser ingeniero.", en: "High school. Where the decision to become an engineer was made." },
     skills: [],
   },
   {
