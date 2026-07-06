@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/Button";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Globe } from "@/components/motion/Globe";
 
-const FIRST = "STEVEN";
-const LAST = "GALO";
+const FIRST = "STEVEN GALO";
+const LAST = "GALODEV";
 
 /** Languages/stack orbiting the Earth as satellites. belt 0 = outer, 1 = inner. */
 const SATELLITES: { label: string; belt: 0 | 1 }[] = [
@@ -111,8 +111,8 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
           </motion.p>
 
           <h1 className="select-none font-semibold leading-none">
-            <span className="sr-only">Steven Galo</span>
-            {/* STEVEN — discreto, arriba */}
+            <span className="sr-only">Steven Galo · GaloDev</span>
+            {/* STEVEN GALO — discreto, arriba */}
             <span
               aria-hidden
               className="flex flex-wrap font-mono text-[clamp(1rem,2.8vw,1.7rem)] font-medium uppercase tracking-[0.42em] text-muted"
@@ -125,21 +125,21 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
                   transition={{ duration: 0.55, ease: EASE.out, delay: 0.08 + i * 0.04 }}
                   className="inline-block"
                 >
-                  {ch}
+                  {ch === " " ? " " : ch}
                 </motion.span>
               ))}
             </span>
-            {/* GALO — el que sobresale */}
+            {/* GALODEV — el que sobresale */}
             <span
               aria-hidden
-              className="mt-1 flex flex-wrap text-[clamp(4rem,14vw,11rem)] tracking-tighter"
+              className="mt-1 flex flex-wrap text-[clamp(2.75rem,8.2vw,7.5rem)] tracking-tighter"
             >
               {LAST.split("").map((ch, i) => (
                 <motion.span
                   key={i}
                   initial={reduced ? false : { opacity: 0, y: "0.4em", filter: "blur(14px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.8, ease: EASE.out, delay: 0.38 + i * 0.09 }}
+                  transition={{ duration: 0.8, ease: EASE.out, delay: 0.5 + i * 0.07 }}
                   className="inline-block"
                 >
                   {ch}
