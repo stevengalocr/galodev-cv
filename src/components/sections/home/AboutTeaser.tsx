@@ -1,10 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dict } from "@/lib/i18n/dictionaries";
-import { PERSON } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { Portrait } from "@/components/ui/Portrait";
 
 const BIO = {
   es: "Soy Steven, ingeniero en sistemas con ~6 años construyendo software: freelance, enterprise (.NET, Go, Angular) y producto propio (Next.js, Supabase). GaloDev es la marca bajo la que diseño y envío.",
@@ -17,13 +16,7 @@ export function AboutTeaser({ locale, dict }: { locale: Locale; dict: Dict }) {
       <div className="mx-auto grid max-w-page items-center gap-10 sm:grid-cols-[auto_1fr] sm:gap-14">
         <Reveal>
           <div className="h-40 w-40 sm:h-52 sm:w-52">
-            <AssetImage
-              src={PERSON.portrait}
-              alt="Steven — retrato"
-              ratio="1 / 1"
-              rounded="rounded-2xl"
-              className="h-full"
-            />
+            <Portrait ratio="1 / 1" className="h-full" />
           </div>
         </Reveal>
 

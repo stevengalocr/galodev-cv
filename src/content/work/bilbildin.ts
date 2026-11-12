@@ -1,6 +1,5 @@
 import type { Project } from "./types";
 
-// NOTE: liveUrl and screenshot files are ASSETS — see ASSETS-TODO.md
 export const bilbildin: Project = {
   slug: "bilbildin",
   name: "BilBildin",
@@ -16,6 +15,15 @@ export const bilbildin: Project = {
     es: "Sabe cuánto ganas. Hoy. No al final del mes.",
     en: "It knows what you earn. Today. Not at month's end.",
   },
+  summary: {
+    es: "Tienda en línea con la marca de cada negocio y un panel simple para productos, pedidos e inventario. El dueño ve su ganancia real, no solo las ventas.",
+    en: "An online store under each business's own brand, with a simple panel for products, orders and inventory. Owners see real profit, not just sales.",
+  },
+  highlights: [
+    { es: "Tiendas con dominio propio", en: "Stores on their own domain" },
+    { es: "Inventario que se descuenta solo", en: "Inventory that updates itself" },
+    { es: "Español, inglés y portugués", en: "Spanish, English and Portuguese" },
+  ],
   problem: {
     es: "Los micro y pequeños negocios de LATAM venden mucho por WhatsApp e Instagram pero rara vez saben cuánto ganan: pedidos dispersos, inventario en la cabeza, costos y precios sin control y cero datos para decidir.",
     en: "LATAM micro-businesses sell a lot over WhatsApp and Instagram but rarely know what they earn: scattered orders, inventory in their head, uncontrolled costs and prices, and no data to decide.",
@@ -98,8 +106,8 @@ export const bilbildin: Project = {
     "i18n ES/EN/PT", "Tailwind", "lucide-react", "Vercel",
   ],
   screenshots: [
-    { src: "/screenshots/bilbildin/storefront.png", alt: { es: "Tienda pública con marca del negocio", en: "Branded public storefront" } },
-    { src: "/screenshots/bilbildin/admin-dashboard.png", alt: { es: "Panel con ganancia real", en: "Dashboard with real profit" } },
-    { src: "/screenshots/bilbildin/orders.png", alt: { es: "Gestión de pedidos e inventario", en: "Orders and inventory management" } },
+    { src: "/work/bilbildin/desktop.webp", device: "desktop", alt: { es: "Portada de BilBildin con la tienda demo", en: "BilBildin landing with the demo store" } },
+    { src: "/work/bilbildin/detail.webp", device: "desktop", alt: { es: "Lo que incluye cada tienda", en: "What every store includes" } },
+    { src: "/work/bilbildin/mobile.webp", device: "mobile", alt: { es: "BilBildin en el teléfono", en: "BilBildin on a phone" } },
   ],
 };

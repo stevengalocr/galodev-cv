@@ -1,6 +1,12 @@
 import type { Bilingual } from "@/lib/i18n/config";
 
-export type ProjectSlug = "datfud" | "seltter" | "bilbildin" | "coindev";
+export type ProjectSlug =
+  | "datfud"
+  | "seltter"
+  | "bilbildin"
+  | "tuanis3d"
+  | "coindev"
+  | "devloaders";
 
 export interface EngineeringChallenge {
   /** Short label, often technical. */
@@ -15,8 +21,10 @@ export interface Metric {
 }
 
 export interface Screenshot {
-  /** Path under /public, e.g. /screenshots/seltter/dashboard.png — see ASSETS-TODO.md */
+  /** Path under /public, e.g. /work/seltter/desktop.webp (real captures of the live site). */
   src: string;
+  /** Which frame the capture is shown in. */
+  device: "desktop" | "mobile";
   alt: Bilingual;
   /** Optional caption shown under the image. */
   caption?: Bilingual;
@@ -44,12 +52,17 @@ export interface Project {
   accent: string;
   /** e.g. "v1.0.1 · Producción" */
   status: Bilingual;
-  /** Live demo URL — ASSET, fill from deployed product. */
+  /** Public URL of the live product. */
   liveUrl: string;
   /** Short category line for cards, e.g. "SaaS multi-tenant · Menú digital". */
   kind: Bilingual;
   /** Year or range. */
   year: string;
+
+  /** What it is for, in one or two sentences — used on the home showcase. */
+  summary: Bilingual;
+  /** Three short facts shown next to the summary. */
+  highlights: Bilingual[];
 
   problem: Bilingual;
   solution: Bilingual[];

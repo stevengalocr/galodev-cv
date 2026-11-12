@@ -1,10 +1,9 @@
 import type { Project } from "./types";
 
-// NOTE: liveUrl and screenshot files are ASSETS — see ASSETS-TODO.md
 export const coindev: Project = {
   slug: "coindev",
   name: "CoinDev",
-  accent: "#7C5CFF",
+  accent: "#4FB8FF",
   year: "2026",
   status: { es: "v0.1 · Pre-lanzamiento", en: "v0.1 · Pre-launch" },
   liveUrl: "https://coindev.app",
@@ -16,6 +15,15 @@ export const coindev: Project = {
     es: "Tus finanzas personales, claras y en tu moneda.",
     en: "Your personal finances, clear and in your currency.",
   },
+  summary: {
+    es: "Finanzas personales pensadas para Latinoamérica: ingresos, gastos, presupuestos y metas en varias monedas, con tipo de cambio en vivo.",
+    en: "Personal finance built for Latin America: income, expenses, budgets and goals across currencies, with live exchange rates.",
+  },
+  highlights: [
+    { es: "USD/CRC en vivo", en: "Live USD/CRC" },
+    { es: "Reportes y exportación a PDF", en: "Reports and PDF export" },
+    { es: "Datos aislados por usuario (RLS)", en: "Per-user data isolation (RLS)" },
+  ],
   problem: {
     es: "Las apps de finanzas personales suelen ser genéricas, en dólares y pensadas para otro mercado. Hacía falta una herramienta simple, en español y orientada al usuario costarricense, que muestre ingresos, gastos, presupuestos y metas con tipos de cambio reales.",
     en: "Personal finance apps tend to be generic, dollar-centric and built for another market. The need was a simple, Spanish-first tool for the Costa Rican user that shows income, expenses, budgets and goals with real exchange rates.",
@@ -84,8 +92,8 @@ export const coindev: Project = {
     "Edge Functions", "Recharts", "jsPDF", "CSS variables", "Vercel",
   ],
   screenshots: [
-    { src: "/screenshots/coindev/overview.png", alt: { es: "Resumen financiero", en: "Financial overview" } },
-    { src: "/screenshots/coindev/fx.png", alt: { es: "Divisas en tiempo real", en: "Real-time currencies" } },
-    { src: "/screenshots/coindev/reports.png", alt: { es: "Reportes y análisis", en: "Reports and analysis" } },
+    { src: "/work/coindev/desktop.webp", device: "desktop", alt: { es: "Portada de CoinDev", en: "CoinDev landing page" } },
+    { src: "/work/coindev/detail.webp", device: "desktop", alt: { es: "Tipos de cambio y reportes", en: "Exchange rates and reports" } },
+    { src: "/work/coindev/mobile.webp", device: "mobile", alt: { es: "CoinDev en el teléfono", en: "CoinDev on a phone" } },
   ],
 };

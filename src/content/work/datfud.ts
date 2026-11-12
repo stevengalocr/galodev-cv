@@ -1,10 +1,9 @@
 import type { Project } from "./types";
 
-// NOTE: liveUrl and screenshot files are ASSETS — see ASSETS-TODO.md
 export const datfud: Project = {
   slug: "datfud",
   name: "DataFud",
-  accent: "#FF5C38",
+  accent: "#E0B04A",
   year: "2026",
   status: { es: "v1.0.1 · Producción", en: "v1.0.1 · Production" },
   liveUrl: "https://datafud.com",
@@ -16,6 +15,15 @@ export const datfud: Project = {
     es: "El comensal pide desde su mesa por QR; el restaurante opera en tiempo real.",
     en: "Diners order from their table by QR; the restaurant runs in real time.",
   },
+  summary: {
+    es: "Menú digital con QR y NFC para sodas, cafeterías y restaurantes. El comensal pide desde la mesa y la cocina lo ve al instante.",
+    en: "QR and NFC digital menu for cafés and restaurants. Diners order from the table and the kitchen sees it instantly.",
+  },
+  highlights: [
+    { es: "Multi-tenant aislado con RLS", en: "Multi-tenant, isolated with RLS" },
+    { es: "Precios recalculados en el servidor", en: "Prices recomputed server-side" },
+    { es: "Multi-idioma y multi-moneda", en: "Multi-language and multi-currency" },
+  ],
   problem: {
     es: "Los restaurantes y sodas pierden tiempo y ventas con menús de papel desactualizados y comandas a mano. Necesitan que el cliente pida solo, que la cocina lo vea al instante y que el dueño controle el negocio sin contratar software a la medida.",
     en: "Restaurants lose time and sales to outdated paper menus and handwritten orders. They need diners to self-order, the kitchen to see it instantly, and the owner to run the business without bespoke software.",
@@ -94,8 +102,8 @@ export const datfud: Project = {
     "SECURITY DEFINER RPCs", "Tailwind", "qrcode", "Zod", "Vercel",
   ],
   screenshots: [
-    { src: "/screenshots/datfud/menu-client.png", alt: { es: "Menú del comensal por QR", en: "Diner QR menu" } },
-    { src: "/screenshots/datfud/order-board.png", alt: { es: "Tablero de comandas en vivo", en: "Live order board" } },
-    { src: "/screenshots/datfud/dashboard.png", alt: { es: "Panel del restaurante", en: "Restaurant dashboard" } },
+    { src: "/work/datfud/desktop.webp", device: "desktop", alt: { es: "Portada de DataFud", en: "DataFud landing page" } },
+    { src: "/work/datfud/detail.webp", device: "desktop", alt: { es: "Panel del restaurante con órdenes en vivo", en: "Restaurant panel with live orders" } },
+    { src: "/work/datfud/mobile.webp", device: "mobile", alt: { es: "DataFud en el teléfono", en: "DataFud on a phone" } },
   ],
 };

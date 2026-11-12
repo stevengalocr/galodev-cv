@@ -4,7 +4,8 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { Starfield } from "@/components/motion/Starfield";
 import { HeroCosmos } from "@/components/sections/home/HeroCosmos";
 import { SkillsJourney } from "@/components/sections/home/SkillsJourney";
-import { ProductBands } from "@/components/sections/home/ProductBands";
+import { ProductShowcase } from "@/components/sections/home/ProductShowcase";
+import { BuildLog } from "@/components/sections/home/BuildLog";
 import { AboutTeaser } from "@/components/sections/home/AboutTeaser";
 import { ContactCTA } from "@/components/sections/home/ContactCTA";
 
@@ -24,7 +25,8 @@ export default async function HomePage({
       <Starfield />
       <HeroCosmos locale={locale} dict={dict} />
       <SkillsJourney locale={locale} dict={dict} />
-      <ProductBands locale={locale} dict={dict} />
+      <ProductShowcase locale={locale} dict={dict} />
+      <BuildLog locale={locale} dict={dict} />
       <AboutTeaser locale={locale} dict={dict} />
       <ContactCTA locale={locale} dict={dict} />
     </>

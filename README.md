@@ -2,7 +2,7 @@
 
 Portafolio personal de **Steven** (ingeniero full-stack, marca GaloDev). Bilingüe
 ES/EN, dark "technical", con un sistema de movimiento "Living Blueprint". Presenta
-cuatro SaaS reales (Seltter, DataFud, BilBildin, CoinDev) como case studies de ingeniería.
+seis productos reales (Seltter, DataFud, BilBildin, Tuanis3D, CoinDev, DevLoaders) como case studies de ingeniería.
 
 ## Stack
 
@@ -36,12 +36,14 @@ npm test           # vitest (lógica: i18n, contenido, contacto)
 ruta. El texto del "chrome" vive en `src/lib/i18n/dictionaries.ts`; el contenido de
 cada producto es bilingüe dentro de su objeto (`{ es, en }`).
 
-## Assets pendientes
+## Imágenes de producto
 
-Ver **[ASSETS-TODO.md](./ASSETS-TODO.md)** — capturas de producto, foto, CV, URLs de
-demo, OG y variables de entorno, con la ruta exacta de cada uno. El sitio funciona con
-placeholders; para activar imágenes reales: pon el archivo en `public/` y cambia
-`PLACEHOLDER_MODE = false` en `src/components/ui/AssetImage.tsx`.
+Las capturas e íconos de cada producto son reales (tomadas de los sitios en vivo) y
+viven en `public/work/<slug>/` (`desktop.webp`, `detail.webp`, `mobile.webp`, `icon.png`).
+Una prueba verifica que cada archivo referenciado exista.
+
+Pendientes: la foto (`public/steven.jpg` + `PERSON.hasPortrait = true` en `src/lib/site.ts`),
+el CV (`public/cv.pdf`) y las imágenes Open Graph. Ver **[ASSETS-TODO.md](./ASSETS-TODO.md)**.
 
 ## Variables de entorno
 

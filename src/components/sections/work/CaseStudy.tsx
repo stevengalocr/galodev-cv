@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, ExternalLink, ShieldCheck } from "lucide-react";
 import type { Project } from "@/content/work/types";
-import { getNextProject } from "@/content/work";
+import { getNextProject, getShot } from "@/content/work";
 import { resolveBilingual } from "@/lib/i18n/resolve";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dict } from "@/lib/i18n/dictionaries";
@@ -10,7 +10,7 @@ import { CountUp } from "@/components/motion/CountUp";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { BrowserFrame, PhoneFrame } from "@/components/ui/DeviceFrame";
 import { ArchitectureDiagram } from "./ArchitectureDiagram";
 
 /** Splits a metric value into a leading number (for CountUp) and the rest. */
@@ -30,6 +30,9 @@ export function CaseStudy({
   dict: Dict;
 }) {
   const next = getNextProject(project.slug);
+  const desktop = getShot(project, "desktop");
+  const mobile = getShot(project, "mobile");
+  const detail = project.screenshots.filter((s) => s.device === "desktop")[1];
 
   return (
     <article className="relative">
@@ -67,7 +70,7 @@ export function CaseStudy({
           <Reveal delay={0.15}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button href={project.liveUrl} external variant="solid">
-                {dict.cta.viewLiveDemo}
+                {dict.cta.visitSite}
                 <ExternalLink className="h-4 w-4" />
               </Button>
               <div className="flex flex-wrap gap-2">
@@ -124,22 +127,42 @@ export function CaseStudy({
                 </Reveal>
               ))}
             </ul>
-            <div className="space-y-4">
-              {project.screenshots.slice(0, 2).map((shot, i) => (
-                <Reveal key={shot.src} delay={i * 0.08}>
-                  <AssetImage src={shot.src} alt={resolveBilingual(shot.alt, locale)} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-          {project.screenshots[2] && (
             <Reveal>
-              <div className="mt-4">
-                <AssetImage
-                  src={project.screenshots[2].src}
-                  alt={resolveBilingual(project.screenshots[2].alt, locale)}
-                  ratio="21 / 9"
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block pb-8 pl-6 sm:pb-10 sm:pl-10"
+              >
+                {desktop && (
+                  <BrowserFrame
+                    src={desktop.src}
+                    alt={resolveBilingual(desktop.alt, locale)}
+                    url={project.liveUrl}
+                    sizes="(min-width: 1024px) 45vw, 90vw"
+                    className="transition-transform duration-500 ease-out-strong group-hover:-translate-y-1"
+                  />
+                )}
+                {mobile && (
+                  <div className="absolute bottom-0 left-0 w-[24%] min-w-[84px] max-w-[150px] transition-transform duration-500 ease-out-strong group-hover:-translate-y-2">
+                    <PhoneFrame src={mobile.src} alt={resolveBilingual(mobile.alt, locale)} />
+                  </div>
+                )}
+              </a>
+            </Reveal>
+          </div>
+          {detail && (
+            <Reveal>
+              <div className="mt-12">
+                <BrowserFrame
+                  src={detail.src}
+                  alt={resolveBilingual(detail.alt, locale)}
+                  url={project.liveUrl}
+                  sizes="(min-width: 1280px) 78rem, 92vw"
                 />
+                <p className="mt-3 text-center font-mono text-xs text-faint">
+                  {resolveBilingual(detail.alt, locale)}
+                </p>
               </div>
             </Reveal>
           )}
@@ -218,7 +241,7 @@ export function CaseStudy({
           </div>
           <div className="mt-10">
             <Button href={project.liveUrl} external variant="ghost">
-              {dict.cta.viewLiveDemo}
+              {dict.cta.visitSite}
               <ExternalLink className="h-4 w-4" />
             </Button>
           </div>

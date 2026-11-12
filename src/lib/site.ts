@@ -18,6 +18,7 @@ export const CONTACT = {
 export const PERSON = {
   firstName: "Steven",
   brand: "GaloDev",
-  /** Portrait — ASSET: add public/steven.jpg */
+  /** Portrait file under /public. Flip hasPortrait once public/steven.jpg exists. */
   portrait: "/steven.jpg",
+  hasPortrait: false,
 };

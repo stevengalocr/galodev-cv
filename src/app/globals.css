@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0a0a0f;
+  --bg: #08090f;
   --surface: #101019;
   --surface-2: #16161f;
   --text: #ecedf2;
@@ -87,6 +87,35 @@ body {
   }
   .ease-out-strong {
     transition-timing-function: var(--ease-out);
+  }
+}
+
+/* Product deck: cards pin under the nav and stack, only where a whole card
+   fits on screen. Keep the query in sync with STACK_QUERY in ProductShowcase. */
+@media (min-width: 1024px) and (min-height: 760px) {
+  .stack-card {
+    position: sticky;
+    top: calc(5.25rem + var(--i, 0) * 0.55rem);
+  }
+}
+
+/* Slow drift of the nebula lights behind the home. Transform only. */
+@keyframes nebula-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 4%, 0) scale(1.12);
+  }
+}
+@keyframes nebula-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+  50% {
+    transform: translate3d(-5%, -6%, 0) scale(1);
   }
 }
 

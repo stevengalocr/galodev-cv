@@ -23,6 +23,8 @@ interface Milestone {
   year: string;
   org: string;
   note: Bilingual;
+  /** Hue of this stage: the path warms up from cool blue to gold as it reaches today. */
+  tone: string;
   skills: FloatingSkill[];
 }
 
@@ -32,6 +34,7 @@ const MILESTONES: Milestone[] = [
     year: "—",
     org: "Crestón School",
     note: { es: "Colegio. Donde se tomó la decisión de ser ingeniero.", en: "High school. Where the decision to become an engineer was made." },
+    tone: "#7c8cff",
     skills: [],
   },
   {
@@ -41,6 +44,7 @@ const MILESTONES: Milestone[] = [
       es: "Ingeniería en Sistemas de Computación (2020–2023).",
       en: "Computer Systems Engineering (2020–2023).",
     },
+    tone: "#5fa8ff",
     skills: [
       { label: "HTML/CSS", x: 8, y: 18, size: "md" },
       { label: "JavaScript", x: 72, y: 10, size: "lg" },
@@ -55,6 +59,7 @@ const MILESTONES: Milestone[] = [
       es: "Páginas web, tiendas e-commerce y documentación — los clientes llegaron por el contenido.",
       en: "Websites, e-commerce stores and documentation — clients arrived through content.",
     },
+    tone: "#45c4d6",
     skills: [
       { label: "React", x: 78, y: 16, size: "lg", accent: true },
       { label: "E-commerce", x: 6, y: 26, size: "md" },
@@ -69,6 +74,7 @@ const MILESTONES: Milestone[] = [
       es: "Pasantía: app web en React y app móvil en Flutter con enlaces de pago.",
       en: "Internship: React web app and a Flutter mobile app with payment links.",
     },
+    tone: "#5ed3a6",
     skills: [
       { label: "React", x: 10, y: 16, size: "md" },
       { label: "Flutter", x: 76, y: 24, size: "lg" },
@@ -82,6 +88,7 @@ const MILESTONES: Milestone[] = [
       es: "Full-stack enterprise: del frontend al despliegue, en producción real.",
       en: "Enterprise full-stack: from frontend to deployment, in real production.",
     },
+    tone: "#d6c25f",
     skills: [
       { label: "Angular", x: 6, y: 12, size: "lg" },
       { label: "Go", x: 80, y: 10, size: "lg", accent: true },
@@ -97,9 +104,10 @@ const MILESTONES: Milestone[] = [
     year: "Hoy",
     org: "GaloDev",
     note: {
-      es: "Cuatro SaaS propios en producción para LATAM.",
-      en: "Four SaaS products of my own, in production for LATAM.",
+      es: "Seis productos propios en producción.",
+      en: "Six products of my own, in production.",
     },
+    tone: "#f0b45a",
     skills: [
       { label: "Next.js", x: 74, y: 12, size: "lg", accent: true },
       { label: "TypeScript", x: 6, y: 20, size: "lg" },
@@ -147,7 +155,7 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
             {!reduced && (
               <motion.div
                 style={{ scaleY: lineScale, originY: 0 }}
-                className="absolute inset-0 w-full bg-gradient-to-b from-accent/70 via-accent/50 to-accent/20"
+                className="absolute inset-0 w-full bg-gradient-to-b from-[#7c8cff] via-[#45c4d6] to-[#f0b45a]"
               />
             )}
           </div>
@@ -156,7 +164,11 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
             {MILESTONES.map((m, i) => {
               const left = i % 2 === 0;
               return (
-                <li key={m.org} className="relative py-14 sm:py-20">
+                <li
+                  key={m.org}
+                  className="relative py-14 sm:py-20"
+                  style={{ ["--accent" as string]: m.tone }}
+                >
                   {/* floating skills — the knowledge gathered on the way */}
                   <div aria-hidden className="pointer-events-none absolute inset-0">
                     {m.skills.map((s, si) => (
@@ -166,9 +178,15 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-18% 0px -18% 0px" }}
                         transition={{ duration: 1, ease: EASE.out, delay: 0.15 + si * 0.12 }}
-                        style={{ left: `${s.x}%`, top: `${s.y}%` }}
+                        style={{
+                          left: `${s.x}%`,
+                          top: `${s.y}%`,
+                          ...(s.accent
+                            ? { color: "color-mix(in srgb, var(--accent) 60%, transparent)" }
+                            : null),
+                        }}
                         className={`absolute font-mono ${SIZE_CLASS[s.size]} ${
-                          s.accent ? "text-accent/30" : "text-faint/40"
+                          s.accent ? "" : "text-[#8a93b8]/35"
                         } ${si % 2 === 1 ? "hidden sm:block" : ""} select-none whitespace-nowrap motion-safe:[animation:skill-drift_9s_ease-in-out_infinite]`}
                       >
                         <span style={{ animationDelay: `${si * -1.7}s` }} className="inline-block">

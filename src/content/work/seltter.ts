@@ -1,10 +1,9 @@
 import type { Project } from "./types";
 
-// NOTE: liveUrl and screenshot files are ASSETS — see ASSETS-TODO.md
 export const seltter: Project = {
   slug: "seltter",
   name: "Seltter",
-  accent: "#C9A84C",
+  accent: "#86D3B0",
   year: "2026",
   status: { es: "v1.0.1 · Producción", en: "v1.0.1 · Production" },
   liveUrl: "https://seltter.com",
@@ -16,6 +15,15 @@ export const seltter: Project = {
     es: "La lealtad no se descarga. Se lleva en el bolsillo.",
     en: "Loyalty you don't download. You carry it in your pocket.",
   },
+  summary: {
+    es: "Tarjetas de fidelización digitales que viven en Apple Wallet y Google Wallet. El negocio sella desde su panel y el cliente no descarga ninguna app.",
+    en: "Digital loyalty cards that live in Apple Wallet and Google Wallet. The business stamps from its panel and the customer never downloads an app.",
+  },
+  highlights: [
+    { es: "Apple Wallet + Google Wallet", en: "Apple Wallet + Google Wallet" },
+    { es: "Push nativo, sin intermediarios", en: "Native push, no middlemen" },
+    { es: "Suscripciones con Stripe", en: "Stripe subscriptions" },
+  ],
   problem: {
     es: "El cartón de sellos de papel se pierde, no da datos y no recuerda al cliente que vuelva. Las apps de fidelización exigen descargar una app — fricción que mata la adopción — y los negocios locales no quieren invertir en hardware ni software complejo.",
     en: "Paper stamp cards get lost, give no data, and never remind the customer to come back. Traditional loyalty apps force a download — friction that kills adoption — and local businesses won't invest in hardware or complex software.",
@@ -109,8 +117,8 @@ export const seltter: Project = {
     "Tailwind 4", "Framer Motion", "@zxing", "Nodemailer", "Sharp", "Zod",
   ],
   screenshots: [
-    { src: "/screenshots/seltter/dashboard.png", alt: { es: "Panel de Seltter con clientes y reportes", en: "Seltter dashboard with customers and reports" } },
-    { src: "/screenshots/seltter/card-editor.png", alt: { es: "Editor de tarjeta en vivo", en: "Live card editor" } },
-    { src: "/screenshots/seltter/wallet-pass.png", alt: { es: "Tarjeta en Apple Wallet", en: "Card in Apple Wallet" } },
+    { src: "/work/seltter/desktop.webp", device: "desktop", alt: { es: "Portada de Seltter", en: "Seltter landing page" } },
+    { src: "/work/seltter/detail.webp", device: "desktop", alt: { es: "Panel de control y tarjetas de ejemplo", en: "Control panel and sample cards" } },
+    { src: "/work/seltter/mobile.webp", device: "mobile", alt: { es: "Seltter en el teléfono", en: "Seltter on a phone" } },
   ],
 };

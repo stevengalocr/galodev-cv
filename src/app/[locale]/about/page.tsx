@@ -9,7 +9,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Chip } from "@/components/ui/Chip";
 import { Button } from "@/components/ui/Button";
-import { AssetImage } from "@/components/ui/AssetImage";
+import { Portrait } from "@/components/ui/Portrait";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -20,13 +20,13 @@ export const metadata: Metadata = { title: "About" };
 const BIO: Record<Locale, string[]> = {
   es: [
     "Soy Steven, ingeniero en sistemas. Llevo unos seis años construyendo software: empecé como freelancer desde la universidad — páginas web, tiendas e-commerce y documentación para clientes — y, ya graduado, sumo casi tres años en desarrollo enterprise que llega a producción.",
-    "En el día a día me muevo en stack enterprise — Angular, Go, C# y .NET sobre SQL Server, con Azure, Docker y Scrum — creando e integrando APIs REST y sistemas que operan en ambientes reales. En paralelo, bajo mi marca GaloDev, diseño y envío SaaS completos con Next.js y Supabase: cuatro productos en producción para el mercado LATAM.",
+    "En el día a día me muevo en stack enterprise — Angular, Go, C# y .NET sobre SQL Server, con Azure, Docker y Scrum — creando e integrando APIs REST y sistemas que operan en ambientes reales. En paralelo, bajo mi marca GaloDev, diseño y envío SaaS completos con Next.js y Supabase: seis productos en producción.",
     "Me muevo cómodo entre el negocio y el código: valido requerimientos, gestiono riesgos y me aseguro de que lo que se entrega funcione. Actualmente curso la Licenciatura en Ingeniería en Sistemas con énfasis en Calidad del Software.",
     "También comparto lo que aprendo: como GaloDev he construido una comunidad de más de 36 mil personas en TikTok y 6 mil en Instagram (@galodevcr), creando contenido de desarrollo desde la universidad — así llegaron mis primeros clientes freelance.",
   ],
   en: [
     "I'm Steven, a systems engineer. I've been building software for about six years: I started freelancing while at university — websites, e-commerce stores and documentation for clients — and since graduating I've added almost three years of enterprise development that ships to production.",
-    "Day to day I work in an enterprise stack — Angular, Go, C# and .NET over SQL Server, with Azure, Docker and Scrum — building and integrating REST APIs and systems that run in real production environments. In parallel, under my GaloDev brand, I design and ship complete SaaS products with Next.js and Supabase: four products in production for the LATAM market.",
+    "Day to day I work in an enterprise stack — Angular, Go, C# and .NET over SQL Server, with Azure, Docker and Scrum — building and integrating REST APIs and systems that run in real production environments. In parallel, under my GaloDev brand, I design and ship complete SaaS products with Next.js and Supabase: six products in production.",
     "I'm comfortable between the business and the code: I validate requirements, manage risk and make sure what ships actually works. I'm currently pursuing a Licentiate in Computer Systems Engineering with a focus on Software Quality.",
     "I also share what I learn: as GaloDev I've built a community of 36,000+ people on TikTok and 6,000+ on Instagram (@galodevcr), creating dev content since university — that's how my first freelance clients arrived.",
   ],
@@ -63,8 +63,8 @@ const EXPERIENCE: Job[] = [
         en: "I design and ship complete SaaS products end to end: product, architecture, frontend, backend, database and security.",
       },
       {
-        es: "Cuatro productos en producción para LATAM (Seltter, DataFud, BilBildin, CoinDev) con Next.js y Supabase (RLS).",
-        en: "Four products in production for LATAM (Seltter, DataFud, BilBildin, CoinDev) with Next.js and Supabase (RLS).",
+        es: "Seis productos en producción (Seltter, DataFud, BilBildin, Tuanis3D, CoinDev y DevLoaders) con Next.js y Supabase (RLS).",
+        en: "Six products in production (Seltter, DataFud, BilBildin, Tuanis3D, CoinDev and DevLoaders) with Next.js and Supabase (RLS).",
       },
       {
         es: "Comunidad técnica: +36k en TikTok y +6k en Instagram creando contenido de desarrollo.",
@@ -181,7 +181,7 @@ export default async function AboutPage({
         <div className="grid items-end gap-10 sm:grid-cols-[16rem_1fr] sm:gap-14">
           <Reveal>
             <div className="w-full max-w-[16rem]">
-              <AssetImage src={PERSON.portrait} alt="Steven — retrato" ratio="4 / 5" rounded="rounded-2xl" />
+              <Portrait ratio="4 / 5" />
             </div>
           </Reveal>
           <div>

@@ -6,6 +6,8 @@ export interface Dict {
     viewWork: string;
     getInTouch: string;
     viewLiveDemo: string;
+    visitSite: string;
+    caseStudy: string;
     downloadCv: string;
     nextProject: string;
     backHome: string;
@@ -23,6 +25,9 @@ export interface Dict {
     workEyebrow: string;
     workTitle: string;
     workLead: string;
+    logEyebrow: string;
+    logTitle: string;
+    logLead: string;
     aboutEyebrow: string;
     contactTitle: string;
     contactLead: string;
@@ -62,6 +67,8 @@ const es: Dict = {
     viewWork: "Ver proyectos",
     getInTouch: "Hablemos",
     viewLiveDemo: "Ver demo en vivo",
+    visitSite: "Visitar sitio",
+    caseStudy: "Caso de estudio",
     downloadCv: "Descargar CV",
     nextProject: "Siguiente proyecto",
     backHome: "Volver al inicio",
@@ -79,9 +86,13 @@ const es: Dict = {
     skillsLead:
       "Un recorrido por mi experiencia — y las habilidades que fui adquiriendo en el camino, de proyectos independientes a producción.",
     workEyebrow: "El sistema GaloDev",
-    workTitle: "Cuatro productos reales, en producción",
+    workTitle: "Seis productos reales, en producción",
     workLead:
-      "Cada uno es un SaaS completo construido solo. Entra a cada caso para ver la arquitectura y los retos de ingeniería.",
+      "Los diseñé, construí y publiqué yo. Visita cada sitio o entra al caso para ver la arquitectura y los retos de ingeniería.",
+    logEyebrow: "Bitácora",
+    logTitle: "Todo lo que he construido",
+    logLead:
+      "Del primer HTML a seis productos en producción. Tomado de mi historial en GitHub.",
     aboutEyebrow: "Quién está detrás",
     contactTitle: "¿Construimos algo juntos?",
     contactLead: "Disponible para empleo y proyectos freelance.",
@@ -121,6 +132,8 @@ const en: Dict = {
     viewWork: "View work",
     getInTouch: "Get in touch",
     viewLiveDemo: "View live demo",
+    visitSite: "Visit site",
+    caseStudy: "Case study",
     downloadCv: "Download CV",
     nextProject: "Next project",
     backHome: "Back home",
@@ -138,9 +151,13 @@ const en: Dict = {
     skillsLead:
       "A walk through my experience — and the skills I picked up along the way, from independent projects to production.",
     workEyebrow: "The GaloDev system",
-    workTitle: "Four real products, in production",
+    workTitle: "Six real products, in production",
     workLead:
-      "Each is a complete SaaS built solo. Open any case study to see the architecture and the engineering challenges.",
+      "I designed, built and shipped each one. Visit any site or open the case study to see the architecture and the engineering challenges.",
+    logEyebrow: "Build log",
+    logTitle: "Everything I have built",
+    logLead:
+      "From the first HTML to six products in production. Taken from my GitHub history.",
     aboutEyebrow: "Who's behind it",
     contactTitle: "Should we build something?",
     contactLead: "Open to full-time roles and freelance projects.",

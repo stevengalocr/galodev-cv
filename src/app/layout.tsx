@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     template: "%s · Steven — GaloDev",
   },
   description:
-    "Full-stack engineer. I design and build SaaS products end to end — architecture, frontend, backend, database and security. Four real products in production.",
+    "Full-stack engineer. I design and build SaaS products end to end — architecture, frontend, backend, database and security. Six real products in production.",
   openGraph: {
     type: "website",
     title: "Steven · Full-stack engineer — GaloDev",
     description:
-      "Four real SaaS products, built solo. Architecture, security and engineering depth.",
+      "Six real products, built solo. Architecture, security and engineering depth.",
     images: ["/og/default.png"], // ASSET: see ASSETS-TODO.md
   },
   twitter: { card: "summary_large_image" },
