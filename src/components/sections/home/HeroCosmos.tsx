@@ -96,15 +96,15 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
   }, [reduced]);
 
   return (
-    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pt-16 sm:px-8">
-      <div className="mx-auto grid w-full max-w-page items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+    <section className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden px-5 pb-8 pt-20 sm:px-8 sm:pb-0 sm:pt-16">
+      <div className="mx-auto grid w-full max-w-page items-center gap-7 sm:gap-10 lg:grid-cols-[1fr_1fr] xl:gap-4">
         {/* ── copy ─────────────────────────────────────────────── */}
         <div className="relative z-10 order-2 lg:order-1">
           <motion.p
             initial={reduced ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE.out }}
-            className="mono-label mb-6 flex items-center gap-2"
+            className="mono-label mb-4 flex items-center gap-2 sm:mb-6"
           >
             <span className="inline-block h-px w-8 bg-accent" />
             {dict.home.role} · Costa Rica
@@ -152,12 +152,12 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
             initial={reduced ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: EASE.out, delay: 0.55 }}
-            className="mt-7 flex max-w-xl flex-col gap-8"
+            className="mt-4 flex max-w-xl flex-col gap-4 sm:mt-7 sm:gap-8"
           >
-            <p className="text-balance text-2xl font-medium text-text sm:text-3xl">
+            <p className="text-balance text-xl font-medium text-text sm:text-3xl">
               {dict.home.heroOrigin}
             </p>
-            <p className="text-pretty text-lg text-muted sm:text-xl">{dict.home.heroLead}</p>
+            <p className="text-pretty text-base text-muted sm:text-xl">{dict.home.heroLead}</p>
             <div className="flex flex-wrap items-center gap-3">
               <Magnetic>
                 <Button href={`/${locale}#work`} variant="solid">
@@ -184,23 +184,54 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
         >
           <div
             ref={stageRef}
-            className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-[420px] lg:max-w-[520px]"
+            className="relative mx-auto aspect-square w-[min(76vw,36svh)] sm:w-full sm:max-w-[460px] lg:max-w-[600px] xl:max-w-[660px]"
           >
-            {/* decorative orbit lines */}
+            {/* atmosphere: a wide brand-coloured halo behind the planet */}
             <div
               aria-hidden
-              className="absolute left-1/2 top-1/2 h-[46%] w-[124%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-border/70"
-              style={{ transform: "translate(-50%,-50%) rotate(-9deg)" }}
-            />
-            <div
-              aria-hidden
-              className="absolute left-1/2 top-1/2 h-[62%] w-[102%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] border border-border/50"
-              style={{ transform: "translate(-50%,-50%) rotate(20deg)" }}
+              className="absolute inset-[-18%] rounded-full motion-safe:[animation:halo-breathe_9s_ease-in-out_infinite]"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 50%, rgba(79,93,255,0.38) 0%, rgba(34,184,207,0.16) 34%, rgba(139,92,246,0.08) 52%, transparent 68%)",
+              }}
             />
 
+            {/* orbit lines, each with a small light travelling along it */}
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 h-[46%] w-[124%]"
+              style={{ transform: "translate(-50%,-50%) rotate(-9deg)" }}
+            >
+              <div className="absolute inset-0 rounded-[50%] border border-[#7c8cff]/30" />
+              <div className="absolute inset-0 motion-safe:[animation:orbit-spin_26s_linear_infinite]">
+                <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#9fe3ee] shadow-[0_0_12px_3px_rgba(69,196,214,0.8)]" />
+              </div>
+            </div>
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-1/2 h-[62%] w-[102%]"
+              style={{ transform: "translate(-50%,-50%) rotate(20deg)" }}
+            >
+              <div className="absolute inset-0 rounded-[50%] border border-[#45c4d6]/20" />
+              <div className="absolute inset-0 motion-safe:[animation:orbit-spin_38s_linear_infinite_reverse]">
+                <span className="absolute left-1/2 top-0 h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#ffd9a0] shadow-[0_0_12px_3px_rgba(240,180,90,0.8)]" />
+              </div>
+            </div>
+
             {/* globe (z-2), satellites swap z 1↔3 around it */}
-            <div className="absolute inset-[7%] z-[2]">
+            <div className="absolute inset-[5%] z-[2]">
               <Globe />
+              {/* rim light on the lit side + soft shade on the far side: gives the sphere volume */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-[9%] rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle at 30% 26%, rgba(159,227,238,0.16), transparent 42%), radial-gradient(circle at 78% 82%, rgba(5,6,14,0.55), transparent 58%)",
+                  boxShadow:
+                    "inset 0 0 0 1px rgba(124,140,255,0.22), 0 0 60px -6px rgba(79,93,255,0.55)",
+                }}
+              />
             </div>
 
             {SATELLITES.map((sat, i) => (
@@ -209,13 +240,20 @@ export function HeroCosmos({ locale, dict }: { locale: Locale; dict: Dict }) {
                 ref={(el) => {
                   chipRefs.current[i] = el;
                 }}
-                className={`absolute left-0 top-0 whitespace-nowrap rounded-full border border-border bg-surface/85 px-3 py-1 font-mono text-[0.65rem] text-muted backdrop-blur-sm will-change-transform sm:text-xs ${i >= 6 ? "hidden md:inline-flex" : "inline-flex"}`}
+                className={`absolute left-0 top-0 whitespace-nowrap rounded-full border border-white/10 bg-[#0c0e1c]/85 px-3 py-1 font-mono text-[0.65rem] text-text/80 backdrop-blur-sm will-change-transform sm:text-xs ${i >= 6 ? "hidden md:inline-flex" : "inline-flex"}`}
               >
-                <span className="mr-1.5 inline-block h-1 w-1 self-center rounded-full bg-accent" />
+                <span
+                  className={`mr-1.5 inline-block h-1 w-1 self-center rounded-full ${sat.belt === 0 ? "bg-[#9fe3ee]" : "bg-[#f0b45a]"}`}
+                />
                 {sat.label}
               </span>
             ))}
 
+            {/* where it all ships from */}
+            <p className="absolute -bottom-2 left-1/2 z-[4] flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-[#0c0e1c]/80 px-3 py-1 font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted backdrop-blur-sm sm:bottom-2 sm:text-[0.68rem]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#f0b45a] shadow-[0_0_10px_2px_rgba(240,180,90,0.8)]" />
+              San José, CR · 9.93°N 84.08°W
+            </p>
           </div>
         </motion.div>
       </div>

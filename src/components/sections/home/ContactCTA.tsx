@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 
 export function ContactCTA({ locale, dict }: { locale: Locale; dict: Dict }) {
   return (
-    <section className="relative px-5 py-28 sm:px-8 sm:py-40">
+    <section className="relative px-5 py-20 sm:px-8 sm:py-40">
       <div className="mx-auto max-w-page">
         <Reveal>
           <p className="mono-label mb-6">{dict.home.contactLead}</p>

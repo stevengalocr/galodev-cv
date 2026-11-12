@@ -1,5 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Lock } from "lucide-react";
 import {
   BUILD_KIND_LABEL,
   BUILD_KIND_TONE,
@@ -24,22 +27,24 @@ const STATS: { value: string; label: Record<Locale, string> }[] = [
     value: String(BUILD_LOG.filter((e) => e.product).length),
     label: { es: "productos en producción", en: "products in production" },
   },
-  {
-    value: BUILD_LOG[BUILD_LOG.length - 1].date.slice(0, 4),
-    label: { es: "primer repositorio", en: "first repository" },
-  },
+  { value: "+3", label: { es: "años en repos privados de empresa", en: "years in private company repos" } },
 ];
+
+/** On phones the log opens with this many rows; the rest sit behind a toggle. */
+const MOBILE_PREVIEW = 6;
 
 /**
  * "Bitácora": every build since the first repository, as a commit-log style
- * timeline grouped by year. Server-rendered and static — the only motion is the
- * hover state, so it reads instantly and costs nothing.
+ * timeline grouped by year, plus a note for the enterprise years whose code is
+ * private. On phones it starts collapsed so the page does not become a wall.
  */
 export function BuildLog({ locale, dict }: { locale: Locale; dict: Dict }) {
   const years = buildLogByYear();
+  const [open, setOpen] = useState(false);
+  let row = 0;
 
   return (
-    <section id="log" className="relative scroll-mt-24 px-5 pb-8 pt-24 sm:px-8 sm:pb-12 sm:pt-32">
+    <section id="log" className="relative scroll-mt-24 px-5 pb-4 pt-16 sm:px-8 sm:pb-12 sm:pt-32">
       <div className="mx-auto max-w-page">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
@@ -57,9 +62,28 @@ export function BuildLog({ locale, dict }: { locale: Locale; dict: Dict }) {
           </dl>
         </div>
 
-        <div className="mt-14 space-y-12 sm:mt-20">
-          {years.map(({ year, entries }) => (
-            <div key={year} className="grid gap-5 lg:grid-cols-[9rem_1fr] lg:gap-10">
+        {/* the years GitHub cannot show */}
+        <div className="mt-8 flex items-start gap-4 rounded-2xl border border-[#f0b45a]/25 bg-[#f0b45a]/[0.05] p-4 sm:mt-12 sm:items-center sm:p-6">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#f0b45a]/15 text-[#f0b45a]">
+            <Lock className="h-4 w-4" />
+          </span>
+          <div>
+            <p className="font-medium text-text">{dict.home.logPrivateTitle}</p>
+            <p className="mt-1 text-pretty text-sm text-muted">{dict.home.logPrivateBody}</p>
+          </div>
+        </div>
+
+        <div className="mt-10 space-y-10 sm:mt-16 sm:space-y-12">
+          {years.map(({ year, entries }) => {
+            const firstRow = row;
+            row += entries.length;
+            // a year whose rows are all past the preview hides on phones until opened
+            const hideYear = !open && firstRow >= MOBILE_PREVIEW;
+            return (
+            <div
+              key={year}
+              className={`grid gap-5 lg:grid-cols-[9rem_1fr] lg:gap-10 ${hideYear ? "max-md:hidden" : ""}`}
+            >
               <div className="lg:sticky lg:top-28 lg:self-start">
                 <p
                   className="font-mono text-5xl font-semibold leading-none tracking-tighter text-transparent sm:text-6xl"
@@ -76,19 +100,43 @@ export function BuildLog({ locale, dict }: { locale: Locale; dict: Dict }) {
               </div>
 
               <ol className="grid gap-x-8 border-l border-white/[0.08] md:grid-cols-2">
-                {entries.map((e) => (
-                  <LogRow key={e.date + e.name} entry={e} locale={locale} />
+                {entries.map((e, i) => (
+                  <LogRow
+                    key={e.date + e.name}
+                    entry={e}
+                    locale={locale}
+                    hidden={!open && firstRow + i >= MOBILE_PREVIEW}
+                  />
                 ))}
               </ol>
             </div>
-          ))}
+            );
+          })}
         </div>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          className="press mt-8 flex w-full items-center justify-center gap-2 rounded-full border border-white/10 py-3 text-sm font-medium text-text md:hidden"
+        >
+          {open ? dict.home.logLess : dict.home.logMore.replace("{n}", String(BUILD_LOG.length))}
+          <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
+        </button>
       </div>
     </section>
   );
 }
 
-function LogRow({ entry: e, locale }: { entry: BuildEntry; locale: Locale }) {
+function LogRow({
+  entry: e,
+  locale,
+  hidden,
+}: {
+  entry: BuildEntry;
+  locale: Locale;
+  hidden: boolean;
+}) {
   const project = e.product ? getProject(e.product) : undefined;
   const tone = project?.accent ?? BUILD_KIND_TONE[e.kind];
   const month = MONTHS[locale][Number(e.date.slice(5, 7)) - 1];
@@ -123,7 +171,7 @@ function LogRow({ entry: e, locale }: { entry: BuildEntry; locale: Locale }) {
   const cls = "group relative flex items-start gap-3 py-3 pl-6 pr-2";
 
   return (
-    <li style={{ ["--accent" as string]: tone }}>
+    <li style={{ ["--accent" as string]: tone }} className={hidden ? "max-md:hidden" : undefined}>
       {project ? (
         <Link
           href={`/${locale}/work/${project.slug}`}

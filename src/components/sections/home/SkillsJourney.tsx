@@ -141,7 +141,7 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
   const lineScale = useSpring(scrollYProgress, { stiffness: 90, damping: 24, restDelta: 0.001 });
 
   return (
-    <section className="relative border-t border-border px-5 py-24 sm:px-8 sm:py-32">
+    <section className="relative border-t border-border px-5 py-16 sm:px-8 sm:py-32">
       <div className="mx-auto max-w-page">
         <SectionHeading
           eyebrow={dict.home.skillsEyebrow}
@@ -149,7 +149,7 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
           lead={dict.home.skillsLead}
         />
 
-        <div ref={pathRef} className="relative mt-20">
+        <div ref={pathRef} className="relative mt-10 sm:mt-20">
           {/* the path: faint rail + golden progress that draws with scroll */}
           <div className="absolute bottom-0 left-[7px] top-0 w-px bg-border sm:left-1/2 sm:-translate-x-1/2">
             {!reduced && (
@@ -166,7 +166,7 @@ export function SkillsJourney({ locale, dict }: { locale: Locale; dict: Dict }) 
               return (
                 <li
                   key={m.org}
-                  className="relative py-14 sm:py-20"
+                  className="relative py-8 sm:py-20"
                   style={{ ["--accent" as string]: m.tone }}
                 >
                   {/* floating skills — the knowledge gathered on the way */}

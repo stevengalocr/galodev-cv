@@ -10,18 +10,16 @@ import type { Project } from "@/content/work/types";
 import { resolveBilingual } from "@/lib/i18n/resolve";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dict } from "@/lib/i18n/dictionaries";
-import { EASE } from "@/lib/motion/easings";
 import { usePrefersReducedMotion } from "@/lib/motion/reduced";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BrowserFrame, PhoneFrame, hostOf } from "@/components/ui/DeviceFrame";
 
-/** Must match the `.stack-card` media query in globals.css. */
-const STACK_QUERY = "(min-width: 1024px) and (min-height: 760px)";
-
 /**
- * The six products as a deck: on roomy screens each card pins under the nav and
- * the next one slides over it, while the ones underneath settle back. On phones
- * and short viewports it is a plain list, so nothing is ever clipped.
+ * The six products as a deck, on every device: each card pins under the nav and
+ * the next one slides over it, while the ones underneath settle back. The card
+ * is laid out to fit one screen at each size (compact on phones); `.stack-card`
+ * in globals.css only pins where that is true, so on very short viewports it
+ * falls back to a plain list and nothing is clipped.
  */
 export function ProductShowcase({ locale, dict }: { locale: Locale; dict: Dict }) {
   const reduced = usePrefersReducedMotion();
@@ -29,16 +27,19 @@ export function ProductShowcase({ locale, dict }: { locale: Locale; dict: Dict }
   const [stacked, setStacked] = useState(false);
   const { scrollYProgress } = useScroll({ target: deckRef, offset: ["start start", "end end"] });
 
+  // Follow the CSS: the deck is "stacked" exactly when the cards are sticky.
   useEffect(() => {
-    const mq = window.matchMedia(STACK_QUERY);
-    const sync = () => setStacked(mq.matches);
+    const sync = () => {
+      const card = deckRef.current?.querySelector(".stack-card");
+      setStacked(!!card && getComputedStyle(card).position === "sticky");
+    };
     sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    window.addEventListener("resize", sync);
+    return () => window.removeEventListener("resize", sync);
   }, []);
 
   return (
-    <section id="work" className="relative scroll-mt-24 px-5 pt-24 sm:px-8 sm:pt-32">
+    <section id="work" className="relative scroll-mt-24 px-4 pt-16 sm:px-8 sm:pt-32">
       <div className="mx-auto max-w-page">
         <SectionHeading
           eyebrow={dict.home.workEyebrow}
@@ -47,7 +48,7 @@ export function ProductShowcase({ locale, dict }: { locale: Locale; dict: Dict }
         />
 
         {/* quick index: jump to any product */}
-        <nav aria-label={dict.home.workEyebrow} className="-mx-5 mt-10 overflow-x-auto px-5 sm:mx-0 sm:px-0">
+        <nav aria-label={dict.home.workEyebrow} className="-mx-4 mt-7 overflow-x-auto px-4 sm:mx-0 sm:mt-10 sm:px-0">
           <ul className="flex w-max gap-2 sm:w-auto sm:flex-wrap">
             {PROJECTS.map((p) => (
               <li key={p.slug}>
@@ -64,7 +65,7 @@ export function ProductShowcase({ locale, dict }: { locale: Locale; dict: Dict }
           </ul>
         </nav>
 
-        <ol ref={deckRef} className="mt-10 space-y-6 sm:mt-14 lg:space-y-10">
+        <ol ref={deckRef} className="mt-7 space-y-5 sm:mt-14 sm:space-y-8 lg:space-y-10">
           {PROJECTS.map((p, i) => (
             <ProductCard
               key={p.slug}
@@ -100,7 +101,6 @@ function ProductCard({
   progress: MotionValue<number>;
   animate: boolean;
 }) {
-  const reduced = usePrefersReducedMotion();
   // While later cards slide over this one, it settles back a little.
   const behind = total - 1 - index;
   const start = index / total;
@@ -110,6 +110,13 @@ function ProductCard({
   const desktop = getShot(p, "desktop");
   const mobile = getShot(p, "mobile");
   const flip = index % 2 === 1;
+
+  const count = (
+    <span className="font-mono text-xs text-faint">
+      <span className="text-accent">{String(index + 1).padStart(2, "0")}</span> /{" "}
+      {String(total).padStart(2, "0")}
+    </span>
+  );
 
   return (
     <li
@@ -138,14 +145,12 @@ function ProductCard({
           }}
         />
 
-        <div className="relative grid lg:grid-cols-2 lg:items-center">
+        <div className="relative grid md:grid-cols-2 md:items-center">
           {/* copy */}
-          <div className={`p-6 sm:p-10 lg:p-12 ${flip ? "lg:order-2" : ""}`}>
-            <div className="flex items-center justify-between gap-4">
-              <span className="font-mono text-xs text-faint">
-                <span className="text-accent">{String(index + 1).padStart(2, "0")}</span> /{" "}
-                {String(total).padStart(2, "0")}
-              </span>
+          <div className={`p-5 pb-0 sm:p-10 sm:pb-0 md:p-8 lg:p-12 ${flip ? "md:order-2" : ""}`}>
+            {/* index + status: its own row from tablet up; on phones the index sits by the name */}
+            <div className="hidden items-center justify-between gap-4 sm:flex">
+              {count}
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 font-mono text-[0.68rem] text-muted">
                 <span
                   aria-hidden
@@ -156,27 +161,31 @@ function ProductCard({
               </span>
             </div>
 
-            <div className="mt-7 flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:mt-7 sm:gap-4">
               <Image
                 src={getIcon(p)}
                 alt=""
                 width={56}
                 height={56}
-                className="h-12 w-12 rounded-2xl ring-1 ring-white/10 sm:h-14 sm:w-14"
+                className="h-11 w-11 rounded-xl ring-1 ring-white/10 sm:h-14 sm:w-14 sm:rounded-2xl"
               />
-              <div className="min-w-0">
-                <h3 className="text-4xl font-semibold tracking-tighter sm:text-5xl">{p.name}</h3>
-                <p className="mt-1 font-mono text-[0.7rem] uppercase tracking-wider text-accent">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-[1.7rem] font-semibold leading-none tracking-tighter sm:text-5xl md:text-4xl lg:text-5xl">
+                  {p.name}
+                </h3>
+                <p className="mt-1.5 truncate font-mono text-[0.62rem] uppercase tracking-wider text-accent sm:mt-1 sm:text-[0.7rem]">
                   {resolveBilingual(p.kind, locale)}
                 </p>
               </div>
+              <span className="self-start sm:hidden">{count}</span>
             </div>
 
-            <p className="mt-6 max-w-xl text-pretty text-base text-muted sm:text-lg">
+            <p className="mt-4 max-w-xl text-pretty text-[0.95rem] leading-snug text-muted sm:mt-6 sm:text-lg sm:leading-normal md:text-base lg:text-lg">
               {resolveBilingual(p.summary, locale)}
             </p>
 
-            <ul className="mt-6 space-y-2.5">
+            {/* detail that needs room: tablet and up */}
+            <ul className="mt-6 hidden space-y-2.5 sm:block">
               {p.highlights.map((h) => (
                 <li key={h.es} className="flex items-start gap-3 text-sm text-text/90">
                   <span className="mt-0.5 grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[color-mix(in_srgb,var(--accent)_18%,transparent)]">
@@ -187,16 +196,16 @@ function ProductCard({
               ))}
             </ul>
 
-            <p className="mt-6 font-mono text-[0.7rem] leading-relaxed text-faint">
+            <p className="mt-6 hidden font-mono text-[0.7rem] leading-relaxed text-faint sm:block">
               {p.stack.slice(0, 5).join("  ·  ")}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-4 flex items-center gap-2 sm:mt-8 sm:flex-wrap sm:gap-3">
               <a
                 href={p.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="press inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-[#07070b] transition-[filter] duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                className="press inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-accent px-3 py-2.5 text-[0.85rem] sm:gap-2 sm:text-sm font-semibold text-[#07070b] transition-[filter] duration-200 hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none sm:px-5"
               >
                 {dict.cta.visitSite}
                 <span className="sr-only"> {p.name}</span>
@@ -204,7 +213,7 @@ function ProductCard({
               </a>
               <Link
                 href={`/${locale}/work/${p.slug}`}
-                className="press group/cs inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-2.5 text-sm font-medium text-text transition-colors duration-200 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                className="press group/cs inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/10 px-3 py-2.5 text-[0.85rem] sm:gap-2 sm:text-sm font-medium text-text transition-colors duration-200 hover:border-accent/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex-none sm:px-5"
               >
                 {dict.cta.caseStudy}
                 <span className="sr-only"> {p.name}</span>
@@ -214,17 +223,13 @@ function ProductCard({
           </div>
 
           {/* real captures of the live product */}
-          <motion.a
+          <a
             href={p.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`${dict.cta.visitSite}: ${hostOf(p.liveUrl)}`}
-            initial={reduced ? false : { y: 36 }}
-            whileInView={{ y: 0 }}
-            viewport={{ once: true, margin: "-10% 0px" }}
-            transition={{ duration: 0.9, ease: EASE.out }}
-            className={`group/shot relative block px-6 pb-10 sm:px-10 sm:pb-12 lg:py-12 ${
-              flip ? "lg:order-1 lg:pl-12 lg:pr-4" : "lg:pl-4 lg:pr-12"
+            className={`group/shot relative block p-5 sm:p-10 md:py-8 lg:py-12 ${
+              flip ? "md:order-1 md:pl-8 md:pr-2 lg:pl-12 lg:pr-4" : "md:pl-2 md:pr-8 lg:pl-4 lg:pr-12"
             }`}
           >
             {desktop && (
@@ -238,14 +243,14 @@ function ProductCard({
             )}
             {mobile && (
               <div
-                className={`absolute bottom-3 w-[24%] min-w-[84px] max-w-[150px] transition-transform duration-500 ease-out-strong group-hover/shot:-translate-y-3 sm:bottom-5 lg:bottom-6 ${
-                  flip ? "right-3 sm:right-6 lg:right-0" : "right-3 sm:right-6 lg:right-8"
+                className={`absolute bottom-2 w-[22%] min-w-[70px] max-w-[150px] transition-transform duration-500 ease-out-strong group-hover/shot:-translate-y-3 sm:bottom-5 lg:bottom-6 ${
+                  flip ? "right-2 sm:right-6 md:right-0" : "right-2 sm:right-6 md:right-4 lg:right-8"
                 }`}
               >
                 <PhoneFrame src={mobile.src} alt={resolveBilingual(mobile.alt, locale)} />
               </div>
             )}
-          </motion.a>
+          </a>
         </div>
 
         {/* dims as the next cards cover it */}

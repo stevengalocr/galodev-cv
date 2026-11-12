@@ -7,14 +7,19 @@ import { usePrefersReducedMotion } from "@/lib/motion/reduced";
 const COSTA_RICA: [number, number] = [9.93, -84.08];
 
 /** "From Costa Rica to the world": arcs shipping software outward. */
-const ARCS: { to: [number, number] }[] = [
-  { to: [40.71, -74.0] }, // New York
-  { to: [40.42, -3.7] }, // Madrid
-  { to: [-23.55, -46.63] }, // São Paulo
-  { to: [35.68, 139.69] }, // Tokyo
-];
+const GOLD: [number, number, number] = [1, 0.76, 0.32];
+const CYAN: [number, number, number] = [0.35, 0.85, 1];
 
-const GOLD: [number, number, number] = [0.79, 0.66, 0.3];
+/** "From Costa Rica to the world": arcs shipping software outward. */
+const ARCS: { to: [number, number]; color: [number, number, number] }[] = [
+  { to: [40.71, -74.0], color: GOLD }, // New York
+  { to: [19.43, -99.13], color: CYAN }, // Mexico City
+  { to: [4.71, -74.07], color: CYAN }, // Bogotá
+  { to: [-23.55, -46.63], color: GOLD }, // São Paulo
+  { to: [40.42, -3.7], color: CYAN }, // Madrid
+  { to: [51.51, -0.13], color: GOLD }, // London
+  { to: [35.68, 139.69], color: CYAN }, // Tokyo
+];
 
 /**
  * Interactive dotted 3D Earth (cobe v2, ~5 kB WebGL). Auto-rotates, can be
@@ -45,16 +50,17 @@ export function Globe({ className }: { className?: string }) {
       phi,
       theta: 0.22,
       dark: 1,
-      diffuse: 1.2,
-      mapSamples: 14000,
-      mapBrightness: 5.4,
-      baseColor: [0.22, 0.23, 0.28],
+      diffuse: 1.5,
+      mapSamples: 18000,
+      mapBrightness: 7,
+      // brand sky: indigo oceans, lit continents, a blue atmosphere
+      baseColor: [0.36, 0.5, 1],
       markerColor: GOLD,
-      glowColor: [0.09, 0.09, 0.12],
-      markers: [{ location: COSTA_RICA, size: 0.09 }],
-      arcs: ARCS.map((a) => ({ from: COSTA_RICA, to: a.to, color: GOLD })),
-      arcWidth: 0.4,
-      arcHeight: 0.45,
+      glowColor: [0.16, 0.24, 0.72],
+      markers: [{ location: COSTA_RICA, size: 0.1 }],
+      arcs: ARCS.map((a) => ({ from: COSTA_RICA, to: a.to, color: a.color })),
+      arcWidth: 0.5,
+      arcHeight: 0.42,
     });
 
     const onResize = () => {

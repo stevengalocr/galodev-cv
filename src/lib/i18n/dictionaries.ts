@@ -28,6 +28,10 @@ export interface Dict {
     logEyebrow: string;
     logTitle: string;
     logLead: string;
+    logMore: string;
+    logLess: string;
+    logPrivateTitle: string;
+    logPrivateBody: string;
     aboutEyebrow: string;
     contactTitle: string;
     contactLead: string;
@@ -93,6 +97,11 @@ const es: Dict = {
     logTitle: "Todo lo que he construido",
     logLead:
       "Del primer HTML a seis productos en producción. Tomado de mi historial en GitHub.",
+    logMore: "Ver los {n} proyectos",
+    logLess: "Ver menos",
+    logPrivateTitle: "+3 años de trabajo empresarial que no se ve aquí",
+    logPrivateBody:
+      "Desde 2023 trabajo a diario en repositorios privados de empresa, con Angular, Go, C# y .NET. Ese código es confidencial, por eso no aparece en esta lista.",
     aboutEyebrow: "Quién está detrás",
     contactTitle: "¿Construimos algo juntos?",
     contactLead: "Disponible para empleo y proyectos freelance.",
@@ -158,6 +167,11 @@ const en: Dict = {
     logTitle: "Everything I have built",
     logLead:
       "From the first HTML to six products in production. Taken from my GitHub history.",
+    logMore: "See all {n} projects",
+    logLess: "Show less",
+    logPrivateTitle: "3+ years of enterprise work you cannot see here",
+    logPrivateBody:
+      "Since 2023 I have worked daily in private company repositories, with Angular, Go, C# and .NET. That code is confidential, so it is not on this list.",
     aboutEyebrow: "Who's behind it",
     contactTitle: "Should we build something?",
     contactLead: "Open to full-time roles and freelance projects.",

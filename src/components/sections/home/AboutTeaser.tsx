@@ -12,10 +12,10 @@ const BIO = {
 
 export function AboutTeaser({ locale, dict }: { locale: Locale; dict: Dict }) {
   return (
-    <section className="relative px-5 py-24 sm:px-8 sm:py-32">
-      <div className="mx-auto grid max-w-page items-center gap-10 sm:grid-cols-[auto_1fr] sm:gap-14">
+    <section className="relative px-5 py-16 sm:px-8 sm:py-32">
+      <div className="mx-auto grid max-w-page items-center gap-7 sm:grid-cols-[auto_1fr] sm:gap-14">
         <Reveal>
-          <div className="h-40 w-40 sm:h-52 sm:w-52">
+          <div className="h-28 w-28 sm:h-52 sm:w-52">
             <Portrait ratio="1 / 1" className="h-full" />
           </div>
         </Reveal>

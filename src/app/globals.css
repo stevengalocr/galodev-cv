@@ -90,12 +90,26 @@ body {
   }
 }
 
-/* Product deck: cards pin under the nav and stack, only where a whole card
-   fits on screen. Keep the query in sync with STACK_QUERY in ProductShowcase. */
-@media (min-width: 1024px) and (min-height: 760px) {
+/* Product deck: cards pin under the nav and stack, on every device, but only
+   where a whole card fits on screen (the card is compact on phones, taller on
+   tablets). On shorter viewports it stays a normal list so nothing is clipped. */
+.stack-card {
+  --stack-top: 4.5rem;
+  --stack-step: 0.4rem;
+}
+@media (max-width: 639px) and (min-height: 630px),
+  (min-width: 640px) and (max-width: 767px) and (min-height: 1000px),
+  (min-width: 768px) and (max-width: 1023px) and (min-height: 780px),
+  (min-width: 1024px) and (min-height: 680px) {
   .stack-card {
     position: sticky;
-    top: calc(5.25rem + var(--i, 0) * 0.55rem);
+    top: calc(var(--stack-top) + var(--i, 0) * var(--stack-step));
+  }
+}
+@media (min-width: 1024px) {
+  .stack-card {
+    --stack-top: 5.25rem;
+    --stack-step: 0.55rem;
   }
 }
 
@@ -116,6 +130,17 @@ body {
   }
   50% {
     transform: translate3d(-5%, -6%, 0) scale(1);
+  }
+}
+
+/* The planet halo slowly breathes. Transform only. */
+@keyframes halo-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
   }
 }
 
